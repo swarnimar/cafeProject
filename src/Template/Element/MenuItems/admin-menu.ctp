@@ -22,7 +22,7 @@
 			'subMenu' => [
 				'Businesses' => ['controller' => 'Businesses', 'action' => 'index'],
 				'Product Categories' => ['controller' => 'ProductCategories', 'action' => 'index'],
-				'Business Product Categories' => ['controller' => 'BusinessProductCategories', 'action' => 'index']
+				// 'Business Product Categories' => ['controller' => 'BusinessProductCategories', 'action' => 'index']
 			]
 		],
 		'User Management' => [

@@ -13,7 +13,7 @@
  * @license       http://www.opensource.org/licenses/mit-license.php MIT License
  */
 
-$cakeDescription = 'WindUp2StartUp';
+$cakeDescription = 'Sell Start';
 ?>
 <!DOCTYPE html>
 <html class="fixed">

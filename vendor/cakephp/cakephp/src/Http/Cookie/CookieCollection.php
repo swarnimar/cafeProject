@@ -219,7 +219,7 @@ class CookieCollection implements IteratorAggregate, Countable
         $cookies = $this->findMatchingCookies(
             $uri->getScheme(),
             $uri->getHost(),
-            $uri->getPath()
+            $uri->getPath() ?: '/'
         );
         $cookies = array_merge($cookies, $extraCookies);
         $cookiePairs = [];
@@ -357,7 +357,7 @@ class CookieCollection implements IteratorAggregate, Countable
                     continue;
                 }
                 $key = strtolower($key);
-                if (!strlen($cookie[$key])) {
+                if (array_key_exists($key, $cookie) && !strlen($cookie[$key])) {
                     $cookie[$key] = $value;
                 }
             }
