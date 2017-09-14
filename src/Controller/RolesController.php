@@ -20,14 +20,7 @@ class RolesController extends AppController
      */
     public function index()
     {
-        $query = $this->request->getQueryParams();
-        $columns = $this->Roles->schema()->columns();
-        foreach ($query as $field => $value) {
-            if(!in_array($field, $columns)){
-                throw new BadRequestException(__('Field {0} does not exist in Roles Table.', $field));
-            }
-        }
-        $roles = $this->Roles->find()->where($query)->all();
+        $roles = $this->Roles->find()->all();
         
         $this->set(compact('roles'));        
         $this->set('_serialize', ['roles']);
