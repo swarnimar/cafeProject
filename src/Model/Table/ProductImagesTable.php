@@ -45,6 +45,7 @@ class ProductImagesTable extends Table
         $this->addBehavior('Josegonzalez/Upload.Upload', [
                 'image_name' => [
                     'path' => Configure::read('ImageUpload.uploadPath'),
+                    'unlinkPath' => Configure::read('ImageUpload.uploadPath'),
                     'fields' => [
                         'dir' => 'image_path',
                     ],

@@ -1,5 +1,44 @@
 <div class="row">
-    <div class="col-lg-12">
+    <?php if (!empty($product->product_images)): ?>
+        <section class="panel">
+            <header class="panel-heading">
+                <h2 class="panel-title">Product Images</h2>
+            </header>
+            <div class="panel-body">
+                <div class="popup-gallery">
+                    <?php foreach ($product->product_images as $key => $value): ?>
+                        <a class="pull-left mb-xs mr-xs" href="<?= $value->image_url ?>" title="Image <?= $key+1 ?>">
+                            <div class="img-responsive">
+                                <img src="<?= $value->image_url ?>" width="105">
+                            </div>
+                        </a>
+                    <?php endforeach; ?>
+                </div>
+            </div>
+        </section>
+    <?php endif; ?>
+    <?php if (!empty($product->product_bills)): ?>
+        <section class="panel">
+            <header class="panel-heading">
+                <h2 class="panel-title">Product Bills</h2>
+            </header>
+            <div class="panel-body">
+                <div class="popup-gallery">
+                    <?php foreach ($product->product_bills as $key => $value): ?>
+                        <a class="pull-left mb-xs mr-xs" href="<?= $value->image_url ?>" title="Image <?= $key+1 ?>">
+                            <div class="img-responsive">
+                                <img src="<?= $value->image_url ?>" width="105">
+                            </div>
+                        </a>
+                    <?php endforeach; ?>
+                </div>
+            </div>
+        </section>
+    <?php endif; ?>
+    <section class="panel">
+        <header class="panel-heading">
+            <h2 class="panel-title">Product Details</h2>
+        </header>
         <div class="panel-body">
             <dl class="dl-horizontal">
                 <dt><?= __('Business') ?>:</dt> <dd> <?= h($product->business_product_category->business->name) ?> </dd>
@@ -11,5 +50,5 @@
                 <dt><?= __('Created') ?>:</dt> <dd> <?= h($product->created) ?> </dd>
             </dl>
         </div>
-    </div>
+    </section>
 </div>

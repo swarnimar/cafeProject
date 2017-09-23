@@ -90,7 +90,8 @@ $cakeDescription = 'Sell Start';
                             "plugins/bootstrap-datepicker/js/bootstrap-datepicker",
                             "plugins/magnific-popup/magnific-popup",
                             "plugins/jquery-placeholder/jquery.placeholder",
-                            "plugins/dropzone/dropzone"
+                            "plugins/dropzone/dropzone",
+                            "examples.lightbox"
                         ]) 
         ?>
     <!-- Theme Base, Components and Settings -->
