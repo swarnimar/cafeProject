@@ -5,6 +5,7 @@ use Cake\ORM\Query;
 use Cake\ORM\RulesChecker;
 use Cake\ORM\Table;
 use Cake\Validation\Validator;
+use Cake\Core\Configure;
 
 /**
  * ProductBills Model
@@ -40,6 +41,18 @@ class ProductBillsTable extends Table
             'foreignKey' => 'product_id',
             'joinType' => 'INNER'
         ]);
+
+        $this->addBehavior('Josegonzalez/Upload.Upload', [
+                'image_name' => [
+                    'path' => Configure::read('ImageUpload.uploadPath'),
+                    'fields' => [
+                        'dir' => 'image_path',
+                    ],
+                'nameCallback' => function ($data, $settings) {
+                  return time(). $data['name'];
+                }
+            ],
+        ]);
     }
 
     /**
@@ -55,11 +68,9 @@ class ProductBillsTable extends Table
             ->allowEmpty('id', 'create');
 
         $validator
-            ->scalar('image_path')
             ->allowEmpty('image_path');
 
         $validator
-            ->scalar('image_name')
             ->allowEmpty('image_name');
 
         return $validator;

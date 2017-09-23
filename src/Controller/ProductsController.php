@@ -59,7 +59,6 @@ class ProductsController extends AppController
     {
         $product = $this->Products->newEntity();
         if ($this->request->is('post')) {
-
             $this->request->data['user_id'] = $this->Auth->user('id');
 
             if(!isset($this->request->data['business_id']) || !$this->request->data['business_id']){
@@ -84,7 +83,7 @@ class ProductsController extends AppController
 
             $this->request->data['business_product_category_id'] = $businessProductCategory->id; 
 
-            $product = $this->Products->patchEntity($product, $this->request->getData());
+            $product = $this->Products->patchEntity($product, $this->request->data, ['associated' => ['ProductImages', 'ProductBills']]);
             if ($this->Products->save($product)) {
                 $this->Flash->success(__('The product has been saved.'));
 
@@ -110,8 +109,10 @@ class ProductsController extends AppController
     public function edit($id = null)
     {
         $product = $this->Products->get($id, [
-            'contain' => []
+            'contain' => ['BusinessProductCategories']
             ]);
+
+
         if ($this->request->is(['patch', 'post', 'put'])) {
 
             $this->request->data['user_id'] = $this->Auth->user('id');
@@ -137,7 +138,7 @@ class ProductsController extends AppController
             }
 
             $this->request->data['business_product_category_id'] = $businessProductCategory->id;
-            $product = $this->Products->patchEntity($product, $this->request->getData());
+            $product = $this->Products->patchEntity($product, $this->request->data, ['associated' => ['ProductImages', 'ProductBills']]);
             if ($this->Products->save($product)) {
                 $this->Flash->success(__('The product has been saved.'));
 
@@ -148,6 +149,9 @@ class ProductsController extends AppController
         $users = $this->Products->Users->find('list', ['limit' => 200]);
         $businesses = $this->Products->BusinessProductCategories->Businesses->find('list', ['limit' => 200]);
         $productCategories = $this->Products->BusinessProductCategories->ProductCategories->find('list', ['limit' => 200]);
+        $product->business_id = $product->business_product_category->business_id;
+        $product->product_category_id = $product->business_product_category->product_category_id;
+        
         $this->set(compact('product', 'users', 'businesses', 'productCategories'));        
         $this->set('_serialize', ['product']);
     }

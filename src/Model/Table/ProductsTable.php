@@ -52,10 +52,14 @@ class ProductsTable extends Table
             'joinType' => 'INNER'
         ]);
         $this->hasMany('ProductBills', [
-            'foreignKey' => 'product_id'
+            'foreignKey' => 'product_id',
+            'dependent' => true,
+            'cascadeCallBacks' => true
         ]);
         $this->hasMany('ProductImages', [
-            'foreignKey' => 'product_id'
+            'foreignKey' => 'product_id',
+            'dependent' => true,
+            'cascadeCallBacks' => true
         ]);
     }
 

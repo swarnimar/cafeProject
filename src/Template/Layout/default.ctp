@@ -33,13 +33,13 @@ $cakeDescription = 'Sell Start';
     <!-- theme stylesheets -->
         <!-- Web Fonts  -->
         <!-- <link href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800|Shadows+Into+Light" rel="stylesheet" type="text/css"> -->
-
         <!-- Vendor CSS -->
         <?= $this->Html->css([
                                 "plugins/bootstrap/css/bootstrap.css",    
                                 "plugins/font-awesome/css/font-awesome",
                                 "plugins/magnific-popup/magnific-popup",
-                                "plugins/bootstrap-datepicker/css/datepicker3"
+                                "plugins/bootstrap-datepicker/css/datepicker3",
+                                "plugins/dropzone/css/dropzone"
         ]) ?>
         
         <!-- Theme CSS -->
@@ -51,6 +51,12 @@ $cakeDescription = 'Sell Start';
 
         <!-- Head Libs -->
         <?= $this->Html->script(["plugins/modernizr/modernizr"])?>
+
+        <?= $this->Html->script([
+                            "plugins/jquery/jquery",
+                            "plugins/bootstrap/js/bootstrap",
+            ]) 
+        ?>
 
 </head>
 <body>
@@ -79,13 +85,12 @@ $cakeDescription = 'Sell Start';
 
     <!-- Vendor -->
         <?= $this->Html->script([
-                            "plugins/jquery/jquery",
-                            "plugins/bootstrap/js/bootstrap",
                             "plugins/jquery-browser-mobile/jquery.browser.mobile",
                             "plugins/nanoscroller/nanoscroller",
                             "plugins/bootstrap-datepicker/js/bootstrap-datepicker",
                             "plugins/magnific-popup/magnific-popup",
-                            "plugins/jquery-placeholder/jquery.placeholder"
+                            "plugins/jquery-placeholder/jquery.placeholder",
+                            "plugins/dropzone/dropzone"
                         ]) 
         ?>
     <!-- Theme Base, Components and Settings -->

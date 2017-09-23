@@ -2,6 +2,7 @@
 namespace App\Model\Entity;
 
 use Cake\ORM\Entity;
+use Cake\Routing\Router;
 
 /**
  * ProductBill Entity
@@ -29,4 +30,14 @@ class ProductBill extends Entity
         '*' => true,
         'id' => false
     ];
+
+    protected function _getImageUrl()
+    {
+
+        if(isset($this->_properties['image_name']) && !empty($this->_properties['image_name'])) {
+            $url = Router::url('/uploads/'.$this->_properties['image_name'],true);
+            return $url;
+        }
+        return false;
+    }
 }
