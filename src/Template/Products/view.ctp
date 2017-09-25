@@ -25,7 +25,7 @@
             <div class="panel-body">
                 <div class="popup-gallery">
                     <?php foreach ($product->product_bills as $key => $value): ?>
-                        <a class="pull-left mb-xs mr-xs" href="<?= $value->image_url ?>" title="Image <?= $key+1 ?>">
+                        <a class="pull-left mb-xs mr-xs" href="<?= $value->image_url ?>" title="Bill Image <?= $key+1 ?>">
                             <div class="img-responsive">
                                 <img src="<?= $value->image_url ?>" width="105">
                             </div>
@@ -37,6 +37,10 @@
     <?php endif; ?>
     <section class="panel">
         <header class="panel-heading">
+            <div class="panel-actions">
+                <!-- <?=$this->Html->link('Register New Practice', ['action' => 'edit', $product->id],['class' => 'pull-right'])?> -->
+                <?= '<a href="'.$this->Url->build(['action' => 'edit', $product->id]).'"><i class="fa fa-pencil fa-lg"></i></a>' ?>
+            </div>
             <h2 class="panel-title">Product Details</h2>
         </header>
         <div class="panel-body">
