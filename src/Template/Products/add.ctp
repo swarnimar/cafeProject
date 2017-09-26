@@ -47,13 +47,13 @@
 <div class="form-group">
     <label class="col-md-3 control-label" for="image">Product Images</label>
     <div class="col-md-6">
-     <?= $this->Form->Html('product_images[].image_name', ['accept'=>"image/*", 'label' => false, 'type'=>'file',  'required' , 'multiple']); ?>
+     <?= $this->Form->Html('product_images[].image_name', ['accept'=>"image/*", 'label' => false, 'type'=>'file', 'multiple']); ?>
  </div>
 </div>
 <div class="form-group">
     <label class="col-md-3 control-label" for="image">Product Bill Images</label>
     <div class="col-md-6">
-     <?= $this->Form->Html('product_bills[].image_name', ['accept'=>"image/*", 'label' => false, 'type'=>'file',  'required' , 'multiple']); ?>
+     <?= $this->Form->Html('product_bills[].image_name', ['accept'=>"image/*", 'label' => false, 'type'=>'file', 'multiple']); ?>
  </div>
 </div>
 <div class="form-group">
