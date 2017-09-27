@@ -59,6 +59,7 @@ class ProductsController extends AppController
     {
         $product = $this->Products->newEntity();
         if ($this->request->is('post')) {
+            pr($this->request->data);die;
             $this->request->data['user_id'] = $this->Auth->user('id');
 
             if(!isset($this->request->data['business_id']) || !$this->request->data['business_id']){
