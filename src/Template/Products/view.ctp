@@ -1,5 +1,4 @@
 <div class="row">
-    <?php if (!empty($product->product_images)): ?>
         <section class="panel">
             <header class="panel-heading">
                 <div class="panel-actions">
@@ -8,19 +7,24 @@
                 <h2 class="panel-title">Product Images</h2>
             </header>
             <div class="panel-body">
-                <div class="popup-gallery">
-                    <?php foreach ($product->product_images as $key => $value): ?>
-                        <a class="pull-left mb-xs mr-xs" href="<?= $value->image_url ?>" title="Image <?= $key+1 ?>">
-                            <div class="img-responsive">
-                                <img src="<?= $value->image_url ?>" width="105">
-                            </div>
-                        </a>
-                    <?php endforeach; ?>
-                </div>
+                <?php if (!empty($product->product_images)): ?>
+                    <div class="popup-gallery">
+                        <?php foreach ($product->product_images as $key => $value): ?>
+                            <a class="pull-left mb-xs mr-xs" href="<?= $value->image_url ?>" title="Image <?= $key+1 ?>">
+                                <div class="img-responsive">
+                                    <div class="img-thumbnail">
+                                        <img src="<?= $value->image_url ?>" width="100" height="100">
+                                    </div>
+                                </div>
+                            </a>
+                        <?php endforeach; ?>
+                    </div>
+                <?php endif; ?>
+                <?php if (empty($product->product_images)): ?>
+                    <h4>No images of the product are available</h4>
+                <?php endif; ?>
             </div>
         </section>
-    <?php endif; ?>
-    <?php if (!empty($product->product_bills)): ?>
         <section class="panel">
             <header class="panel-heading">
                 <div class="panel-actions">
@@ -29,18 +33,24 @@
                 <h2 class="panel-title">Product Bills</h2>
             </header>
             <div class="panel-body">
-                <div class="popup-gallery">
-                    <?php foreach ($product->product_bills as $key => $value): ?>
-                        <a class="pull-left mb-xs mr-xs" href="<?= $value->image_url ?>" title="Bill Image <?= $key+1 ?>">
-                            <div class="img-responsive">
-                                <img src="<?= $value->image_url ?>" width="105">
-                            </div>
-                        </a>
-                    <?php endforeach; ?>
-                </div>
+                <?php if (!empty($product->product_bills)): ?>
+                    <div class="popup-gallery">
+                        <?php foreach ($product->product_bills as $key => $value): ?>
+                            <a class="pull-left mb-xs mr-xs" href="<?= $value->image_url ?>" title="Bill Image <?= $key+1 ?>">
+                                <div class="img-responsive">
+                                    <div class="img-thumbnail">    
+                                        <img src="<?= $value->image_url ?>" width="100" height="100">
+                                    </div>    
+                                </div>
+                            </a>
+                        <?php endforeach; ?>
+                    </div>
+                <?php endif; ?>
+                <?php if (empty($product->product_bills)): ?>
+                    <h4>No bill images of the product are available</h4>
+                <?php endif; ?>
             </div>
         </section>
-    <?php endif; ?>
     <section class="panel">
         <header class="panel-heading">
             <div class="panel-actions">
