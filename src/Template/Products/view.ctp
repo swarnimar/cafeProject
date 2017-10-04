@@ -102,7 +102,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                <h4 class="modal-title" id="myModalLabel">Add Product Images</h4>
+                <h4 class="modal-title" id="myModalLabel">Add Product Bill Images</h4>
             </div>
             <div class="modal-body">
                      <div class="image_upload_div">
@@ -132,7 +132,7 @@
         if(!empty($product->product_images)){
             echo "productImages = ".json_encode($product->product_images).";";
         }
-        if(!empty($product->product_images)){
+        if(!empty($product->product_bills)){
             echo "productBills = ".json_encode($product->product_bills).";";
         }
     ?>
