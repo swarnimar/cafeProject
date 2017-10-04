@@ -121,13 +121,76 @@
 </div>
 <script type="text/javascript">
     
+    imageList = {};
+    billList = {};
+    productImages = [];
+    productBills = [];
+    imageDeleteUrl = "<?=$this->Url->build([ 'controller'=>'ProductImages', 'action' => 'delete', 'prefix' => 'api']) ?>"
+    billDeleteUrl = "<?=$this->Url->build([ 'controller'=>'Bills', 'action' => 'delete', 'prefix' => 'api']) ?>"
+
+    <?php
+        if(!empty($product->product_images)){
+            echo "productImages = ".json_encode($product->product_images).";";
+        }
+        if(!empty($product->product_images)){
+            echo "productBills = ".json_encode($product->product_bills).";";
+        }
+    ?>
+
     $(document).ready(function(){
+
         Dropzone.options.imagesDropzone = {
-          paramName: "image_name", // The name that will be used to transfer the file
+            paramName: "image_name", // The name that will be used to transfer the file
+            addRemoveLinks: true,
+            dictRemoveFileConfirmation: "Are you sure you want to remove this Image?",
+            init:function(){
+                if(productImages.length != 0){
+                    for(x in productImages){
+                        imageList[productImages[x].image_name] = {
+                            id: productImages[x].id,
+                            name: productImages[x].image_name,
+                            size: productImages[x].size
+                        }
+                        this.options.addedfile.call(this, imageList[productImages[x].image_name]);
+                        this.options.thumbnail.call(this, imageList[productImages[x].image_name], productImages[x].image_url);
+                    }
+                }
+            },
+            success:function(file, response){
+                imageList[file.name] = {id : response.response.id, name : file.name, size:file.size };
+            },
+            removedfile: function(file) {
+                $.post(imageDeleteUrl+"/"+imageList[file.name].id).done(function() {
+                    file.previewElement.remove();
+                }); 
+            }
         };
 
         Dropzone.options.billImagesDropzone = {
-          paramName: "image_name", // The name that will be used to transfer the file
+            paramName: "image_name", // The name that will be used to transfer the file
+            addRemoveLinks: true,
+            dictRemoveFileConfirmation: "Are you sure you want to remove this Image?",
+            init:function(){
+                if(productBills.length != 0){
+                    for(x in productBills){
+                        productBills[productBills[x].image_name] = {
+                            id: productBills[x].id,
+                            name: productBills[x].image_name,
+                            size: productBills[x].size
+                        }
+                        this.options.addedfile.call(this, productBills[productBills[x].image_name]);
+                        this.options.thumbnail.call(this, productBills[productBills[x].image_name], productBills[x].image_url);
+                    }
+                }
+            },
+            success:function(file, response){
+                billList[file.name] = {id : response.response.id, name : file.name, size:file.size };
+            },
+            removedfile: function(file) {
+                $.post(billDeleteUrl+"/"+billList[file.name].id).done(function() {
+                    file.previewElement.remove();
+                }); 
+            }
         };
     });
 

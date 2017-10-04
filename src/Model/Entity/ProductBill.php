@@ -30,6 +30,7 @@ class ProductBill extends Entity
         '*' => true,
         'id' => false
     ];
+    protected $_virtual = ['image_url'];
 
     protected function _getImageUrl()
     {

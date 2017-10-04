@@ -48,7 +48,7 @@ class ProductBillsController extends AppController
             throw new InternalErrorException(__('ENTITY_ERROR', 'Product Bill Image'));
         }
 
-        $response = ['status' => true, 'message' => 'Image has been saved'];
+        $response = ['status' => true, 'message' => 'Image has been saved', 'image_url' => $productBillImage->image_url, 'id' => $productBillImage->id];
 
         $this->set(compact('response'));
         $this->set('_serialize', ['response']);

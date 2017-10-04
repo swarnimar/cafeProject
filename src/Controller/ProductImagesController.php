@@ -18,7 +18,7 @@ use Cake\Network\Exception\InternalErrorException;
 class ProductImagesController extends AppController
 {
 
-    /**
+     /**
      * Add method
      *
      * @return \Cake\Http\Response|null Redirects on successful add, renders view otherwise.
@@ -58,7 +58,7 @@ class ProductImagesController extends AppController
             throw new InternalErrorException(__('ENTITY_ERROR', 'Product Image'));
         }
 
-        $response = ['status' => true, 'message' => 'Image has been saved'];
+        $response = ['status' => true, 'message' => 'Image has been saved', 'image_url' => $productImage->image_url, 'id' => $productImage->id];
 
         $this->set(compact('response'));
         $this->set('_serialize', ['response']);
