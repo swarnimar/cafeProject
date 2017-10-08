@@ -90,6 +90,7 @@
                     </div>
             </div>
             <div class="modal-footer">
+                <button type="button" class="myTriggerImages btn btn-success" ><i class="fa fa-upload"></i> Upload</button>
                 <button type="button" class="btn btn-default" data-dismiss="modal">Done</button>
             </div>
         </div>
@@ -107,14 +108,15 @@
             <div class="modal-body">
                      <div class="image_upload_div">
                         <?php  echo $this->Form->create('image',array('url'=>array('controller'=>'ProductBills','action'=>'add'),'method'=>'post','id'=>'bill-images-dropzone','class'=>'dropzone','type'=>'file','autocomplete'=>'off'));?>
-                               
                                <?= $this->Form->input('product_id', ['type' => 'hidden', 'value' => $product->id]) ?> 
 
                         <?php  echo $this->Form->end();?>
                     </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Done</button>
+                
+                <button type="button" class="myTriggerBills btn btn-success" ><i class="fa fa-upload"></i> Upload</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal" >Done</button>
             </div>
         </div>
     </div>
@@ -126,7 +128,7 @@
     productImages = [];
     productBills = [];
     imageDeleteUrl = "<?=$this->Url->build([ 'controller'=>'ProductImages', 'action' => 'delete', 'prefix' => 'api']) ?>"
-    billDeleteUrl = "<?=$this->Url->build([ 'controller'=>'Bills', 'action' => 'delete', 'prefix' => 'api']) ?>"
+    billDeleteUrl = "<?=$this->Url->build([ 'controller'=>'ProductBills', 'action' => 'delete', 'prefix' => 'api']) ?>"
 
     <?php
         if(!empty($product->product_images)){
@@ -143,6 +145,8 @@
             paramName: "image_name", // The name that will be used to transfer the file
             addRemoveLinks: true,
             dictRemoveFileConfirmation: "Are you sure you want to remove this Image?",
+            clickable: '.myTriggerImages',
+            dictDefaultMessage:"Drag and drop to add images or cick on upload button.",
             init:function(){
                 if(productImages.length != 0){
                     for(x in productImages){
@@ -170,16 +174,18 @@
             paramName: "image_name", // The name that will be used to transfer the file
             addRemoveLinks: true,
             dictRemoveFileConfirmation: "Are you sure you want to remove this Image?",
+            clickable: '.myTriggerBills',
+            dictDefaultMessage:"Drag and drop to add images or cick on upload button.",
             init:function(){
                 if(productBills.length != 0){
                     for(x in productBills){
-                        productBills[productBills[x].image_name] = {
+                        billList[productBills[x].image_name] = {
                             id: productBills[x].id,
                             name: productBills[x].image_name,
                             size: productBills[x].size
                         }
-                        this.options.addedfile.call(this, productBills[productBills[x].image_name]);
-                        this.options.thumbnail.call(this, productBills[productBills[x].image_name], productBills[x].image_url);
+                        this.options.addedfile.call(this, billList[productBills[x].image_name]);
+                        this.options.thumbnail.call(this, billList[productBills[x].image_name], productBills[x].image_url);
                     }
                 }
             },
