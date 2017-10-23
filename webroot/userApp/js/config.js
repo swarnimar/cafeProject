@@ -11,7 +11,7 @@ function configState($stateProvider, $urlRouterProvider, $locationProvider, host
     .state('home', {
         controller:'HomeController',
         url: "/",
-        templateUrl: "/cafeProject/userApp/views/home.html",
+        templateUrl: host+"userApp/views/home.html",
         data: {
             pageTitle: 'Dashboard'
         }
@@ -19,7 +19,7 @@ function configState($stateProvider, $urlRouterProvider, $locationProvider, host
     .state('sell', {
         controller:'SellController',
         url: "/sell",
-        templateUrl: "/cafeProject/userApp/views/sell.html",
+        templateUrl: host+"userApp/views/sell.html",
         data: {
             pageTitle: 'Dashboard'
         }
