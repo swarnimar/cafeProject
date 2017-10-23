@@ -1,0 +1,38 @@
+<section class="panel">   
+	<div class="panel-heading">
+		<h4>Add Images</h4>
+	</div>
+	<div class="panel-body">
+ 		<ng-dropzone class="dropzone" options="imagesDzOptions" callbacks="imagesDzCallbacks"></ng-dropzone>
+ 		<br>
+ 		<div class="row text-center">
+        	<button type="button" class="myTriggerImages btn btn-success" ><i class="fa fa-upload"></i> Upload</button>
+        </div>
+
+	</div>
+</section>
+<section class="panel">   
+	<div class="panel-heading">
+		<h4>Add Bill Images</h4>
+	</div>
+	<div class="panel-body">
+ 		<ng-dropzone class="dropzone" options="billDzOptions" callbacks="billDzCallbacks"></ng-dropzone>
+        <br>
+        <div class="row text-center">
+        	<button type="button" class="myTriggerBills btn btn-success" ><i class="fa fa-upload"></i> Upload</button>
+        </div>
+
+	</div>
+</section>
+
+<section class="panel">
+	<div class="panel-body"> 	
+        <div class="row text-center">
+        	<button type="button" class="btn btn-warning btn-lg" ng-click="back()">Back</button>
+            <button type="button" class="btn btn-primary btn-lg" ng-click="next()">Skip</button>
+        </div>
+
+	</div>
+</section>
+
+

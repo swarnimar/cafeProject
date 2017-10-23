@@ -11,9 +11,9 @@
          <div class="form-group">
             <label class="col-md-3 control-label" for="product_category_id">Product Category</label>
             <div class="col-md-6">
-             <?= $this->Form->control('product_category_id', ['label' => false,'required' , 'class' => 'form-control', 'options' => $productCategories]); ?>
-         </div>
-     </div>
+                <?= $this->Form->control('product_category_id', ['label' => false,'required' , 'class' => 'form-control', 'options' => $productCategories]); ?>
+             </div>
+        </div>
      <div class="form-group">
         <label class="col-md-3 control-label" for="manufacturer">Manufacturer</label>
         <div class="col-md-6">

@@ -49,6 +49,19 @@ $cakeDescription = 'Sell Start';
                                 "theme-custom"
         ]) ?>
 
+        <style type="text/css">
+            
+            a.deco-none{
+                color:#000000 !important;
+                text-decoration:none;
+
+            }
+        </style>
+
+        <!-- angular js -->
+
+        <!-- <?= $this->Html->css(["angular/angular-csp"]) ?> -->
+
         <!-- Head Libs -->
         <?= $this->Html->script(["plugins/modernizr/modernizr"])?>
 
@@ -80,8 +93,42 @@ $cakeDescription = 'Sell Start';
         
     </section>
 </body>
-<!-- theme scripts -->
+
+<!-- angular js -->
+
+        <?= $this->Html->script([
+                            "angular/angular.min",
+                            "angular/angular-animate.min",
+                            "angular/angular-cookies.min",
+                            "angular/angular-sanitize.min",
+                            "angular/angular-touch.min",
+                            "angular/angular-resource.min",
+
+                        ]) 
+        ?>
+
+
+
+        <script src="//unpkg.com/@uirouter/angularjs/release/angular-ui-router.min.js"></script>
     
+<!-- angular userApp -->
+
+    <?= $this->Html->script([
+                        "/userApp/js/app",
+                        "/userApp/js/config",
+                        "/userApp/js/controllers/home",
+                        "/userApp/js/controllers/sell"
+                    ]) 
+    ?> 
+
+    <?= $this->Html->script([
+                        "/userApp/js/factory/products",
+                        "/userApp/js/factory/businesses"
+
+                    ]) 
+    ?>    
+
+<!-- theme scripts -->
 
     <!-- Vendor -->
         <?= $this->Html->script([
@@ -94,6 +141,10 @@ $cakeDescription = 'Sell Start';
                             "examples.lightbox"
                         ]) 
         ?>
+        <?= $this->Html->script([
+                        "plugins/dropzone/dropzone-directive",
+                    ])
+        ?> 
     <!-- Theme Base, Components and Settings -->
         <?= $this->Html->script([
                             "theme",
@@ -101,6 +152,10 @@ $cakeDescription = 'Sell Start';
                             "theme.init"
                         ]) 
         ?>
+
+    <!--user App -->
+
+    
 
 <?= $this->Html->script([
                             // 'jquery-3.2.1.min', 

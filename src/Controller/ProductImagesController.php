@@ -18,6 +18,13 @@ use Cake\Network\Exception\InternalErrorException;
 class ProductImagesController extends AppController
 {
 
+
+    public function tempImages(){
+        $data = $this->request->data;
+        $this->set(compact('data'));
+        $this->set('_serialize', ['data']);
+    }
+
      /**
      * Add method
      *

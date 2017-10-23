@@ -1,0 +1,51 @@
+<section class="panel">   
+    <div class="panel-heading">
+    	<h3>Product Form</h3>
+    </div>
+    <div class="panel-body">
+        <form ng-submit="next()" name='productForm'>
+         	<div class="form-group">
+                <label class="col-md-3 control-label" for="manufacturer"><h4>Manufacturer</h4></label>
+                <div class="col-md-6">
+                 	<input type="text" name="manufacturer" required ng-model="product.manufacturer" class="form-control input-lg">
+             	</div>
+         	</div>
+         	<hr>
+         	<div class="form-group">
+                <label class="col-md-3 control-label" for="purchase_year"><h4>Year of Purchase</h4></label>
+                <div class="col-md-6">
+                 	<input type="number" name="purchase_year" min="1900" max="2017" maxlength = '4' minlength='4' required ng-model="product.year_of_purchasing" class="form-control input-lg">
+             	</div>
+         	</div>
+         	<hr>
+         	<div class="form-group">
+                <label class="col-md-3 control-label" for="actual_price"><h4>Actual Price(Rs.)</h4></label>
+                <div class="col-md-6">
+                 	<input type="number" name="actual_price" min="0" required ng-model="product.actual_price" class="form-control input-lg">
+             	</div>
+         	</div>
+         	<hr>
+         	<div class="form-group">
+                <label class="col-md-3 control-label" for="asking_price"><h4>Asking Price(Rs.)</h4></label>
+                <div class="col-md-6">
+                 	<input type="number" name="asking_price"  min = "0" required ng-model="product.asking_price" class="form-control input-lg">
+             	</div>
+         	</div>
+         	<hr>
+         	<div class="form-group">
+                <label class="col-md-3 control-label" for="description"><h4>Product Description</h4></label>
+                <div class="col-md-6">
+                 	<textarea type="textarea" name="description" maxlength="300" required ng-model="product.description" class="form-control input-lg">
+                 	</textarea>
+             	</div>
+         	</div>
+         	<hr>
+         	<div class="form-group text-center">
+                <div class="col-md-12">
+                 	<button type="button" class="btn btn-warning btn-lg" ng-click="back()">Back</button>
+                 	<button type="submit" class="btn btn-primary btn-lg" ng-disabled="productForm.$invalid">Next</button>
+             	</div>
+         	</div>
+        </form>
+    </div>
+</section>

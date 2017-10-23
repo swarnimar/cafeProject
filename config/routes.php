@@ -58,6 +58,7 @@ Router::scope('/', function (RouteBuilder $routes) {
 
     $routes->prefix('api', function ($routes) {
       $routes->connect('/:controller',array('controller'=>':controller', 'action'=>'add',"_method" => "POST"));
+      $routes->connect('/:controller',array('controller'=>':controller', 'action'=>'index',"_method" => "GET"));
 
       $routes->connect('/:controller/:id',array('controller'=>':controller', 'action'=>'edit'),
       array('pass' => array('id'), 'id'=>'[\d]+',"_method" => "PUT"));

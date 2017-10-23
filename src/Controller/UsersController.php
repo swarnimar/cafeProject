@@ -27,7 +27,8 @@ class UsersController extends AppController
      */
     public function index()
     {   
-
+        pr($this->request->data);die;
+      
         $query = $this->request->getQueryParams();  
 
         $columns = $this->Users->schema()->columns();
@@ -67,7 +68,8 @@ class UsersController extends AppController
      */
     public function add()
     {   
-
+        pr($this->request->data);die;
+        
         $user = $this->Users->newEntity();
         if ($this->request->is('post')) {
             
@@ -323,8 +325,9 @@ class UsersController extends AppController
     }
 
     public function dashboard(){
-      $welcomeMessage = "Welcome to WindUp2StartUp!";
-      $this->set('welcomeMessage',$welcomeMessage);
-      $this->set('_serialize', ['welcomeMessage']);
+      $hostUrl = $url = Router::url('/', true);
+
+      $this->set('hostUrl',$hostUrl);
+      $this->set('_serialize', ['hostUrl']);
     }
 }
