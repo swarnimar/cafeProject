@@ -117,7 +117,8 @@ $cakeDescription = 'Sell Start';
                         "/userApp/js/app",
                         "/userApp/js/config",
                         "/userApp/js/controllers/home",
-                        "/userApp/js/controllers/sell"
+                        "/userApp/js/controllers/sell",
+                        "/userApp/js/controllers/buy"
                     ]) 
     ?> 
 

@@ -4,6 +4,7 @@ app.controller('SellController', function ($window, $scope,$http,$state, Product
 	$scope.product = ProductsFactory.product;
 	$scope.formLoc = ProductsFactory.formLocation;
 	$scope.business = null;
+	$scope.categoryButtonText = "Next";
 
 	
 	$scope.imagesDzOptions = {

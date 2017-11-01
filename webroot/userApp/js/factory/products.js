@@ -9,7 +9,7 @@ app.factory('ProductsFactory', function($http,host, $resource, $state){
 			{
 				name:'category',
 				value:true,
-				templateUrl:host+"userApp/views/sell/category.html"
+				templateUrl:host+"userApp/views/category.html"
 			},
 			{
 				name:'productForm',

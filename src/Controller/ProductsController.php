@@ -22,14 +22,18 @@ class ProductsController extends AppController
     {
 
         $query = $this->Products->find()->contain(['Users', 'BusinessProductCategories.Businesses', 'BusinessProductCategories.ProductCategories', 'ProductBills', 'ProductImages']);
-        
-        if($this->Auth->user('role_id') == 1){
-            $products = $query->all();
+
+        $requestQuery = $this->request->query;
+        // pr($requestQuery);die;
+        if(isset($requestQuery['category']) && !in_array($requestQuery['category'], [null, false, ""])){
+            $products = $query->where(['business_product_category_id' => $requestQuery['category']])->all();
         }else{
-            $products = $query->where(['user_id' => $this->Auth->user('id')])->all();
+            $products = $query->all();
         }
 
-        $this->set(compact('products'));
+        $loggedInUser = $this->Auth->user();
+
+        $this->set(compact('products', 'loggedInUser'));
         $this->set('_serialize', ['products']);
     }
 
@@ -46,7 +50,12 @@ class ProductsController extends AppController
             'contain' => ['Users', 'BusinessProductCategories.ProductCategories','BusinessProductCategories.Businesses', 'ProductBills', 'ProductImages']
             ]);
 
-        $this->set('product', $product);
+        $userCanEdit = false;
+        if($this->Auth->user('role_id') == 1 || (isset($product->user_id) && $product->user_id = $this->Auth->user('user_id') )){
+            $userCanEdit = true;
+        }
+
+        $this->set(compact('product', 'userCanEdit'));
         $this->set('_serialize', ['product']);
     }
 

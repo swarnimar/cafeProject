@@ -21,9 +21,18 @@ function configState($stateProvider, $urlRouterProvider, $locationProvider, host
         url: "/sell",
         templateUrl: host+"userApp/views/sell.html",
         data: {
-            pageTitle: 'Dashboard'
+            pageTitle: 'Sell'
         }
     })
+    .state('buy', {
+        controller:'BuyController',
+        url: "/buy",
+        templateUrl: host+"userApp/views/category.html",
+        data: {
+            pageTitle: 'Buy'
+        }
+    })
+
 
 }
 

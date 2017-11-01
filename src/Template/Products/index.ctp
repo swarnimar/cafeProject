@@ -1,8 +1,10 @@
 <section class="panel">
     <header class="panel-heading">
-        <span class= "col-sm-offset-10">
-            <?=$this->Html->link('Add a New Product', ['action' => 'add'], ['class' => ['btn', 'btn-primary']])?>
-        </span>
+        <?php if($loggedInUser['role_id'] == 1): ?>    
+            <span class= "col-sm-offset-10">
+                <?=$this->Html->link('Add a New Product', ['action' => 'add'], ['class' => ['btn', 'btn-primary']])?>
+            </span>
+        <?php endif; ?> 
     </header>
     <div class="panel-body">
         <div class="table-responsive">
@@ -33,9 +35,11 @@
                             <td><?= h($value->created) ?></td>
                             <td class="actions">
                                 <?= '<a href="'.$this->Url->build(['action' => 'view', $value->id]).'"><i class="fa fa-eye"></i></a>' ?>
-                                <?= '<a href="'.$this->Url->build(['action' => 'edit', $value->id]).'"><i class="fa fa-pencil"></i></a>' ?>
-                                <!-- <?= '<a href="'.$this->Url->build(['action' => 'delete', $value->id]).'"><i class="fa fa-trash-o"></i></a>' ?> -->
-                                <?= $this->Form->postLink(__(''), ['action' => 'delete', $value->id], ['confirm' => __('Are you sure you want to delete {0}?', $value->name), 'class' => ['fa', 'fa-trash-o']]) ?> 
+                                <?php if($loggedInUser['role_id'] == 1 || $loggedInUser['id'] == $value->user_id):?>
+                                    <?= '<a href="'.$this->Url->build(['action' => 'edit', $value->id]).'"><i class="fa fa-pencil"></i></a>' ?>
+                                    <!-- <?= '<a href="'.$this->Url->build(['action' => 'delete', $value->id]).'"><i class="fa fa-trash-o"></i></a>' ?> -->
+                                    <?= $this->Form->postLink(__(''), ['action' => 'delete', $value->id], ['confirm' => __('Are you sure you want to delete {0}?', $value->name), 'class' => ['fa', 'fa-trash-o']]) ?>
+                                <?php endif; ?> 
                             </td>
                         </tr>
                     <?php endforeach; ?>

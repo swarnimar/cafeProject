@@ -27,7 +27,6 @@ class UsersController extends AppController
      */
     public function index()
     {   
-        pr($this->request->data);die;
       
         $query = $this->request->getQueryParams();  
 
@@ -68,7 +67,6 @@ class UsersController extends AppController
      */
     public function add()
     {   
-        pr($this->request->data);die;
         
         $user = $this->Users->newEntity();
         if ($this->request->is('post')) {
