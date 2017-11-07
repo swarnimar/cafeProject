@@ -1,18 +1,9 @@
 <section class="panel">
-    
-    <div class="panel-body">
-        <?= $this->Form->create($productCategory, ['data-toggle'=>"validator", 'name' => 'formAdd', 'class'=> ['form-inline', 'text-center'], 'type'=>'post','url' => ['action' => 'add']]) ?>
-            <div class="form-group">
-                <label class="sr-only" for="name">Name</label>
-                <?= $this->Form->input('name', ['label' => false, 'placeholder' => 'Product Category Name','required' => true, 'class' => ['form-control', 'input-rounded']]); ?>
-            </div>
-            <div class="clearfix visible-xs mb-sm"></div>
-            <?= $this->Form->button(__('Add Category'), ['class' => ['btn', 'btn-primary']]) ?>
-        </form>
-    </div>
-</section>
-
-<section class="panel">
+    <header class="panel-heading">
+        <span class= "col-sm-offset-10">
+            <?=$this->Html->link('Add a New Product Category', ['action' => 'add'], ['class' => ['btn', 'btn-primary']])?>
+        </span>
+    </header>
     <div class="panel-body">
         <div class="table-responsive">
             <table class="table mb-none">

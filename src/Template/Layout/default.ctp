@@ -56,6 +56,11 @@ $cakeDescription = 'Sell Start';
                 text-decoration:none;
 
             }
+
+            .cpBoxImage {
+                height: 295.333px; 
+                width: 295.333px
+            }
         </style>
 
         <!-- angular js -->

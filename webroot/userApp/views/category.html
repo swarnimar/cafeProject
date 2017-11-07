@@ -1,30 +1,29 @@
 <section class="panel">        
     <div class="panel-heading">
-    	<h3>Select Catgory</h3>
+    	<h3>Select a Product Catgory</h3>
     </div>
     <div class="panel-body">
-        <form ng-submit="next()" name="categoryForm">
+        <form ng-submit="categoryButtonText == 'Next' ? next() : search()" name="categoryForm">
+
             <div class="form-group">
-                <label class="col-md-3 control-label" for="business"><h4>Business</h4></label>
-                <div class="col-md-6">
-                 	<select ng-options = "business as business.name for business in businesses" required name = "business" class = 'form-control input-lg' ng-model = "business" ng-change="removeCategory()">
-                 		<option value="">--Please select a business type--</option>
-                 	</select>
-             	</div>
-         	</div>
-         	<hr>
-         	<div class="form-group">
-                <label class="col-md-3 control-label" for="business_product_category_id"><h4>Product category</h4></label>
-                <div class="col-md-6">
-                 	<select required ng-options = "category.id as category.product_category.name for category in business.business_product_categories" name= "business_product_category_id " class = "form-control input-lg" ng-model = "product.business_product_category_id">
-                 		<option value="">--Please select a product category--</option>
-                 	</select>
-             	</div>
-         	</div>
+                <div class="col-md-4" ng-repeat="category in productAttributes.business.business_product_categories">
+                    <label>
+                        <input type="radio" name="{{category.product_category.name}}" ng-show='false' ng-model="product.business_product_category_id" ng-value="category.id">
+                        <div class="thumb-info mb-md" style="cursor:pointer;" ng-style="selected(category.id, product.business_product_category_id)">
+                            <img src="{{host}}img/logged-user.jpg" class="rounded img-responsive cpBoxImage" ng-if="!category.product_category.image_url">
+                            <img src="{{category.product_category.image_url}}" class="rounded img-responsive cpBoxImage" ng-if="category.product_category.image_url">
+                            <div class="thumb-info-title">
+                                <span class="thumb-info-type">{{category.product_category.name}}</span>
+                            </div>
+                        </div>
+                    </label>
+                </div>
+            </div>
          	<hr>
          	<div class="form-group text-center">
                 <div class="col-md-12">
-                 	<button type="submit" class="btn btn-primary btn-lg" ng-disabled="categoryForm.$invalid">{{categoryButtonText}}</button>
+                    <button type="button" class="btn btn-warning btn-lg" ng-click="back()">Back</button>
+                 	<button type="submit" class="btn btn-primary btn-lg" ng-disabled="categoryForm.$invalid || !product.business_product_category_id">{{categoryButtonText}}</button>
              	</div>
          	</div>
         </form>

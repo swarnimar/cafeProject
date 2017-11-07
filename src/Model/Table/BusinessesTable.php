@@ -5,7 +5,7 @@ use Cake\ORM\Query;
 use Cake\ORM\RulesChecker;
 use Cake\ORM\Table;
 use Cake\Validation\Validator;
-
+use Cake\Core\Configure;
 /**
  * Businesses Model
  *
@@ -42,6 +42,19 @@ class BusinessesTable extends Table
 
         $this->hasMany('BusinessProductCategories', [
             'foreignKey' => 'business_id'
+        ]);
+
+        $this->addBehavior('Josegonzalez/Upload.Upload', [
+                'image_name' => [
+                    'path' => Configure::read('ImageUpload.uploadPath'),
+                    'unlinkPath' => Configure::read('ImageUpload.uploadPath'),
+                    'fields' => [
+                        'dir' => 'image_path',
+                    ],
+                'nameCallback' => function ($data, $settings) {
+                  return time(). $data['name'];
+                }
+            ],
         ]);
     }
 

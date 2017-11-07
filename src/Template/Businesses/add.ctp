@@ -1,24 +1,26 @@
-<?php
-/**
-  * @var \App\View\AppView $this
-  */
-?>
-<nav class="large-3 medium-4 columns" id="actions-sidebar">
-    <ul class="side-nav">
-        <li class="heading"><?= __('Actions') ?></li>
-        <li><?= $this->Html->link(__('List Businesses'), ['action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('List Business Product Categories'), ['controller' => 'BusinessProductCategories', 'action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('New Business Product Category'), ['controller' => 'BusinessProductCategories', 'action' => 'add']) ?></li>
-    </ul>
-</nav>
-<div class="businesses form large-9 medium-8 columns content">
-    <?= $this->Form->create($business) ?>
-    <fieldset>
-        <legend><?= __('Add Business') ?></legend>
-        <?php
-            echo $this->Form->control('name');
-        ?>
-    </fieldset>
-    <?= $this->Form->button(__('Submit')) ?>
-    <?= $this->Form->end() ?>
+<div class="row">
+  <div class="col-lg-12">
+    <div class="panel-body">
+      <?= $this->Form->create($business, ['data-toggle'=>"validator", 'name' => 'formAdd', 'class'=> ['form-horizontal', "form-bordered"],'enctype' => 'multipart/form-data']) ?>
+      <div class="form-group">
+        <label class="col-md-3 control-label" for="first_name">Name</label>
+        <div class="col-md-6">
+            <?= $this->Form->Html('name', ['label' => false, 'placeholder' => 'Business Name','required' => true, 'class' => ['form-control']]); ?>         
+        </div>
+      </div>
+      <div class="form-group">
+        <label  class="col-md-3 control-label" for="last_name">Image</label>
+        <div class="col-md-6">
+          <?= $this->Form->Html('image_name', ['accept'=>"image/*", 'label' => false, 'type'=>'file']); ?>      
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="text-center">
+          <?= $this->Form->button(__('Submit'), ['class' => ['btn', 'btn-primary']]) ?>
+          <?= $this->Html->link('Cancel',$this->request->referer(),['class' => ['btn', 'btn-danger']]);?>
+        </div>
+      </div> 
+      <?= $this->Form->end() ?>    
+    </div>
+  </div>
 </div>

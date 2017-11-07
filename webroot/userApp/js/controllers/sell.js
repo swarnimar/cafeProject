@@ -1,9 +1,10 @@
 app.controller('SellController', function ($window, $scope,$http,$state, ProductsFactory, BusinessesFactory, host){
   
+  	$scope.host = host;
 	$scope.businesses = BusinessesFactory.businesses;
 	$scope.product = ProductsFactory.product;
-	$scope.formLoc = ProductsFactory.formLocation;
-	$scope.business = null;
+	$scope.formLoc = ProductsFactory.sellFormLocation;
+	$scope.productAttributes = {business: null}
 	$scope.categoryButtonText = "Next";
 
 	
@@ -106,5 +107,12 @@ app.controller('SellController', function ($window, $scope,$http,$state, Product
 		});
 		
 		
+	}
+
+	$scope.selected= function(value1, value2){
+		if(value1 == value2){
+			return {'box-shadow':'0px 12px 22px 1px'};
+		}
+		return {};
 	}
 });

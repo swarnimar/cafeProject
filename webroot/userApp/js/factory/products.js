@@ -5,10 +5,15 @@ app.factory('ProductsFactory', function($http,host, $resource, $state){
 	factory.init = function(){
 
 		factory.product = {};
-		factory.formLocation = [
+		factory.sellFormLocation = [
+			{
+				name:'business',
+				value:true,
+				templateUrl:host+"userApp/views/business.html"
+			},
 			{
 				name:'category',
-				value:true,
+				value:false,
 				templateUrl:host+"userApp/views/category.html"
 			},
 			{
@@ -26,6 +31,19 @@ app.factory('ProductsFactory', function($http,host, $resource, $state){
 				value:false,
 				templateUrl:host+"userApp/views/sell/finish.html"
 			}
+		];
+
+		factory.buyFormLocation = [
+			{
+				name:'business',
+				value:true,
+				templateUrl:host+"userApp/views/business.html"
+			},
+			{
+				name:'category',
+				value:false,
+				templateUrl:host+"userApp/views/category.html"
+			},
 		];
 	}
 

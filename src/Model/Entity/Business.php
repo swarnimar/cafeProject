@@ -2,6 +2,7 @@
 namespace App\Model\Entity;
 
 use Cake\ORM\Entity;
+use Cake\Routing\Router;
 
 /**
  * Business Entity
@@ -29,4 +30,16 @@ class Business extends Entity
         '*' => true,
         'id' => false
     ];
+
+    protected $_virtual = ['image_url'];
+    
+    protected function _getImageUrl()
+    {
+
+        if(isset($this->_properties['image_name']) && !empty($this->_properties['image_name'])) {
+            $url = Router::url('/uploads/'.$this->_properties['image_name'],true);
+            return $url;
+        }
+        return false;
+    }
 }
