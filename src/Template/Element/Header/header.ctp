@@ -7,7 +7,7 @@
 <!-- start: header -->
 <header class="header">
     <div class="logo-container">
-        <a href="../" class="logo">
+        <a href="<?= $this->Url->build(['controller' => 'users', 'action' => 'dashboard') ?>" class="logo">
             <?= $this->Html->image('logo.png', ['alt'=>'Logo',  "height"=>"35"])?>
         </a>
         <div class="visible-xs toggle-sidebar-left" data-toggle-class="sidebar-left-opened" data-target="html" data-fire-event="sidebar-left-opened">
