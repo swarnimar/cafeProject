@@ -8,7 +8,7 @@
             <div class="form-group">
                 <div class="col-md-4" ng-repeat="category in productAttributes.business.business_product_categories">
                     <label>
-                        <input type="radio" name="{{category.product_category.name}}" ng-show='false' ng-model="product.business_product_category_id" ng-value="category.id">
+                        <input type="radio" name="{{category.product_category.name}}" ng-show='false' ng-model="product.business_product_category_id" ng-value="category.id" ng-click="categoryButtonText == 'Next' ? next() : search()">
                         <div class="thumb-info mb-md" style="cursor:pointer;" ng-style="selected(category.id, product.business_product_category_id)">
                             <img src="{{host}}img/logged-user.jpg" class="rounded img-responsive cpBoxImage" ng-if="!category.product_category.image_url">
                             <img src="{{category.product_category.image_url}}" class="rounded img-responsive cpBoxImage" ng-if="category.product_category.image_url">
@@ -23,7 +23,7 @@
          	<div class="form-group text-center">
                 <div class="col-md-12">
                     <button type="button" class="btn btn-warning btn-lg" ng-click="back()">Back</button>
-                 	<button type="submit" class="btn btn-primary btn-lg" ng-disabled="categoryForm.$invalid || !product.business_product_category_id">{{categoryButtonText}}</button>
+                 	<!-- <button type="submit" class="btn btn-primary btn-lg" ng-disabled="categoryForm.$invalid || !product.business_product_category_id">{{categoryButtonText}}</button> -->
              	</div>
          	</div>
         </form>

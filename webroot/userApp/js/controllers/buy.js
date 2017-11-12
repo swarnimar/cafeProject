@@ -38,11 +38,11 @@ app.controller('BuyController', function ($window, $scope,$http,$state, Business
 	}
 	
 	$scope.selected= function(value1, value2){
-			if(value1 == value2){
-				return {'box-shadow':'0px 12px 22px 1px'};
-			}
-			return {};
+		if(value1 == value2){
+			return {'box-shadow':'0px 12px 22px 1px', 'opacity': '1.0', 'filter': 'alpha(opacity=100)'};
 		}
+		return {'opacity': '0.8', 'filter': 'alpha(opacity=8)'};
+	}
 
 	$scope.$watch(function(){
 		return BusinessesFactory.businesses;
