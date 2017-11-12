@@ -113,6 +113,6 @@ app.controller('SellController', function ($window, $scope,$http,$state, Product
 		if(value1 == value2){
 			return {'box-shadow':'0px 12px 22px 1px', 'opacity': '1.0', 'filter': 'alpha(opacity=100)'};
 		}
-		return {'opacity': '0.8', 'filter': 'alpha(opacity=80)'};
+		return {'opacity': '0.6', 'filter': 'alpha(opacity=60)'};
 	}
 });
