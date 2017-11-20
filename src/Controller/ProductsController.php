@@ -26,8 +26,18 @@ class ProductsController extends AppController
         $requestQuery = $this->request->query;
         // pr($requestQuery);die;
         if(isset($requestQuery['category']) && !in_array($requestQuery['category'], [null, false, ""])){
-            $products = $query->where(['business_product_category_id' => $requestQuery['category']])->all();
+            $products = $query->where([
+                                        'business_product_category_id' => $requestQuery['category'], 
+                                        'user_id IS NOT' => $this->Auth->user('id')
+                                      ])
+                               ->all();
+
+        }elseif(isset($requestQuery['productType']) && $requestQuery['productType'] == 'myProducts'){
+            
+            $products = $query->where(['user_id' => $this->Auth->user('id')])->all();
+        
         }else{
+        
             $products = $query->all();
         }
 

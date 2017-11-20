@@ -56,7 +56,12 @@
                         <a class="btn btn-twitter mb-md ml-xs mr-xs">Connect with <i class="fa fa-twitter"></i></a>
                     </div>
 
-                    <p class="text-center">Don't have an account yet? <a href="pages-signup.html">Sign Up!</a>
+                    <p class="text-center">Don't have an account yet? 
+                      <a href="<?= $this->Url->build(['controller' => 'users', 'action' => 'signUp']) ?>">
+                        Sign Up!
+                      </a>  
+                      <!-- <a href="pages-signup.html">Sign Up!</a> -->
+                    </p>
 
                 <?= $this->Form->end() ?>
             </div>

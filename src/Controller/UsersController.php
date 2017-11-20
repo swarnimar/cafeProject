@@ -18,7 +18,7 @@ class UsersController extends AppController
 
     public function initialize(){
         parent::initialize();
-        $this->Auth->allow(['login', 'logout', 'resetPassword']);
+        $this->Auth->allow(['login', 'logout', 'resetPassword', 'signUp']);
     }
     /**
      * Index method
@@ -81,7 +81,6 @@ class UsersController extends AppController
                 
                 return $this->redirect(['action' => 'index']);
             }
-            pr($user);die;
             $this->Flash->error(__('The user could not be saved. Please, try again.'));
         }
         $roles = $this->Users->Roles->find()->all()->combine('id', 'label');
@@ -327,5 +326,30 @@ class UsersController extends AppController
 
       $this->set('hostUrl',$hostUrl);
       $this->set('_serialize', ['hostUrl']);
+    }
+
+    public function signUp()
+    {   
+        $this->viewBuilder()->layout('login');
+        $user = $this->Users->newEntity();
+        if ($this->request->is('post')) {
+            
+            $this->request->data['username'] = $this->Users->getUsername($this->request->data);
+            $this->request->data['role_id'] = 2;
+            $this->request->data['status'] = 1;
+
+            $user = $this->Users->patchEntity($user, $this->request->getData());
+
+            if ($this->Users->save($user)) {
+              
+                $this->Flash->success(__('The user has been saved.'));
+                
+                return $this->redirect(['action' => 'login']);
+            }
+           
+            $this->Flash->error(__('The user could not be saved. Please, try again.'));
+        }
+        $this->set(compact('user'));
+        $this->set('_serialize', ['user']);
     }
 }

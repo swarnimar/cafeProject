@@ -111,8 +111,8 @@ app.controller('SellController', function ($window, $scope,$http,$state, Product
 
 	$scope.selected= function(value1, value2){
 		if(value1 == value2){
-			return {'box-shadow':'0px 12px 22px 1px', 'opacity': '1.0', 'filter': 'alpha(opacity=100)'};
+			return {'box-shadow':'0px 12px 22px 1px', 'border': '2px solid blue'};
 		}
-		return {'opacity': '0.6', 'filter': 'alpha(opacity=60)'};
+		return {'opacity': '1.0', 'filter': 'alpha(opacity=10)'};
 	}
 });

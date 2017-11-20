@@ -62,8 +62,12 @@ $cakeDescription = 'Sell Start';
     <?= $this->fetch('content') ?>
     <!-- end: page -->
 </body>
+
+<!-- Validator -->
+    <script src="https://cdnjs.com/libraries/1000hz-bootstrap-validator"></script>
+
 <!-- theme scripts -->
-    
+
 
     <!-- Vendor -->
         <?= $this->Html->script([
