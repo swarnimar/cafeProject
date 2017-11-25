@@ -79,6 +79,13 @@ app.factory('ProductsFactory', function($http,host, $resource, $state){
 		console.log(factory.product);
 	}
 
+	factory.selectedType = function(value1, value2){
+		if(value1 == value2){
+			return {'box-shadow':'0px 12px 22px 1px', 'border': '1px solid blue'};
+		}
+		return {'opacity': '1.0', 'filter': 'alpha(opacity=10)', 'border': '1px solid white'};
+	}
+
 	return factory;
 	
 });

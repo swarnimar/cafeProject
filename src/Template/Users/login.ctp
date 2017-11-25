@@ -51,10 +51,10 @@
                         <span>or</span>
                     </span>
 
-                    <div class="mb-xs text-center">
+                    <!-- <div class="mb-xs text-center">
                         <a class="btn btn-facebook mb-md ml-xs mr-xs">Connect with <i class="fa fa-facebook"></i></a>
                         <a class="btn btn-twitter mb-md ml-xs mr-xs">Connect with <i class="fa fa-twitter"></i></a>
-                    </div>
+                    </div> -->
 
                     <p class="text-center">Don't have an account yet? 
                       <a href="<?= $this->Url->build(['controller' => 'users', 'action' => 'signUp']) ?>">
@@ -67,7 +67,7 @@
             </div>
         </div>
 
-        <p class="text-center text-muted mt-md mb-md">&copy; Copyright 2014. All Rights Reserved.</p>
+        <p class="text-center text-muted mt-md mb-md">&copy; Copyright <?= ' '.(date("Y")-1).'-'.date("Y").' '?>. All Rights Reserved.</p>
     </div>
 </section>
 

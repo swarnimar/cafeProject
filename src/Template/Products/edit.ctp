@@ -44,6 +44,13 @@
                        <?= $this->Form->Html('asking_price', ['label' => false, 'type'=>'number', 'maxlength' => 10, 'required' , 'class' => 'form-control']); ?>
                     </div>
                 </div>
+                <div class="form-group">   
+                  <div class="text-center">
+                      <label class="control-label">
+                          <?= $this->Form->checkbox('show_contact_info', ['label' => false]); ?> Show Contact Info
+                      </label>
+                  </div>
+                </div>
                 <div class="form-group">
                     <div class="text-center">
                         <?= $this->Form->button(__('Submit'), ['class' => ['btn', 'btn-primary'], 'id' => 'saveGiftCoupon']) ?>

@@ -97,77 +97,81 @@ $cakeDescription = 'Sell Start';
         </div>
         
     </section>
+    <script type="text/javascript">
+        var hostUrl = "<?= $this->Url->build('/', true) ?>";
+    </script>
+    <!-- angular js -->
+
+            <?= $this->Html->script([
+                                "angular/angular.min",
+                                "angular/angular-animate.min",
+                                "angular/angular-cookies.min",
+                                "angular/angular-sanitize.min",
+                                "angular/angular-touch.min",
+                                "angular/angular-resource.min",
+
+                            ]) 
+            ?>
+
+
+
+            <script src="//unpkg.com/@uirouter/angularjs/release/angular-ui-router.min.js"></script>
+        
+    <!-- angular userApp -->
+
+        <?= $this->Html->script([
+                            "/userApp/js/app",
+                            "/userApp/js/config",
+                            "/userApp/js/controllers/home",
+                            "/userApp/js/controllers/sell",
+                            "/userApp/js/controllers/buy"
+                        ]) 
+        ?> 
+
+        <?= $this->Html->script([
+                            "/userApp/js/factory/products",
+                            "/userApp/js/factory/businesses"
+
+                        ]) 
+        ?>    
+
+    <!-- theme scripts -->
+
+        <!-- Vendor -->
+            <?= $this->Html->script([
+                                "plugins/jquery-browser-mobile/jquery.browser.mobile",
+                                "plugins/nanoscroller/nanoscroller",
+                                "plugins/bootstrap-datepicker/js/bootstrap-datepicker",
+                                "plugins/magnific-popup/magnific-popup",
+                                "plugins/jquery-placeholder/jquery.placeholder",
+                                "plugins/dropzone/dropzone",
+                                "examples.lightbox"
+                            ]) 
+            ?>
+            <?= $this->Html->script([
+                            "plugins/dropzone/dropzone-directive",
+                        ])
+            ?> 
+        <!-- Theme Base, Components and Settings -->
+            <?= $this->Html->script([
+                                "theme",
+                                "theme.custom",
+                                "theme.init"
+                            ]) 
+            ?>
+
+        <!--user App -->
+
+        
+
+    <?= $this->Html->script([
+                                // 'jquery-3.2.1.min', 
+                                // 'bootstrap.min',
+                                'user-management',
+                                '/js/plugins/validator/validator.js' 
+                            ]) 
+    ?>
 </body>
 
-<!-- angular js -->
 
-        <?= $this->Html->script([
-                            "angular/angular.min",
-                            "angular/angular-animate.min",
-                            "angular/angular-cookies.min",
-                            "angular/angular-sanitize.min",
-                            "angular/angular-touch.min",
-                            "angular/angular-resource.min",
-
-                        ]) 
-        ?>
-
-
-
-        <script src="//unpkg.com/@uirouter/angularjs/release/angular-ui-router.min.js"></script>
-    
-<!-- angular userApp -->
-
-    <?= $this->Html->script([
-                        "/userApp/js/app",
-                        "/userApp/js/config",
-                        "/userApp/js/controllers/home",
-                        "/userApp/js/controllers/sell",
-                        "/userApp/js/controllers/buy"
-                    ]) 
-    ?> 
-
-    <?= $this->Html->script([
-                        "/userApp/js/factory/products",
-                        "/userApp/js/factory/businesses"
-
-                    ]) 
-    ?>    
-
-<!-- theme scripts -->
-
-    <!-- Vendor -->
-        <?= $this->Html->script([
-                            "plugins/jquery-browser-mobile/jquery.browser.mobile",
-                            "plugins/nanoscroller/nanoscroller",
-                            "plugins/bootstrap-datepicker/js/bootstrap-datepicker",
-                            "plugins/magnific-popup/magnific-popup",
-                            "plugins/jquery-placeholder/jquery.placeholder",
-                            "plugins/dropzone/dropzone",
-                            "examples.lightbox"
-                        ]) 
-        ?>
-        <?= $this->Html->script([
-                        "plugins/dropzone/dropzone-directive",
-                    ])
-        ?> 
-    <!-- Theme Base, Components and Settings -->
-        <?= $this->Html->script([
-                            "theme",
-                            "theme.custom",
-                            "theme.init"
-                        ]) 
-        ?>
-
-    <!--user App -->
-
-    
-
-<?= $this->Html->script([
-                            // 'jquery-3.2.1.min', 
-                            // 'bootstrap.min',
-                            'user-management',
-                            '/js/plugins/validator/validator.js' 
-                        ]) 
-?>
 </html>

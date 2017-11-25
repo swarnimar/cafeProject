@@ -1,4 +1,28 @@
 <div class="row">
+        <?php if(!$userCanEdit && !(isset($product->interested_users) && !empty($product->interested_users))): ?>
+            <div id="notifyAlert" class="alert alert-info text-center">
+                Intrested in buying this product? <a class="alert-link" href="#" onclick="notifyUser(<?= $product->id ?>)">Click here</a> to notify the seller.
+                <br>
+                <strong>Note:</strong> Your contact details will be shown to the seller. 
+            </div>
+        <?php endif; ?>
+        <?php  if(isset($product->interested_users) && !empty($product->interested_users)): ?>
+            <div id="notifiedAlert" class="alert alert-success text-center">
+        <?php else: ?>
+            <div id="notifiedAlert" hidden class="alert alert-success text-center">
+        <?php endif; ?>
+                You have expressed your intrest in buying this product to the seller.
+            </div>
+        <section class="panel">
+            <header class="panel-heading">
+                <h2 class="panel-title">Product Description</h2>
+            </header>
+            <div class="panel-body">
+                <p>
+                    <?= h($product->description) ?>
+                </p>
+            </div>
+        </section>
         <section class="panel">
             <header class="panel-heading">
                 <?php if($userCanEdit): ?>
@@ -73,10 +97,23 @@
                 <dt><?= __('Year Of Purchasing') ?>:</dt> <dd> <?= h($product->year_of_purchasing) ?> </dd>
                 <dt><?= __('Actual Price') ?>:</dt> <dd> <?= h($product->actual_price) ?> </dd>
                 <dt><?= __('Asking Price') ?>:</dt> <dd> <?= h($product->asking_price) ?> </dd>
-                <dt><?= __('Created') ?>:</dt> <dd> <?= h($product->created) ?> </dd>
+                <dt><?= __('Listed On') ?>:</dt> <dd> <?= h($product->created) ?> </dd>
             </dl>
         </div>
     </section>
+    <?php if($product->show_contact_info): ?>
+        <section class="panel">
+            <header class="panel-heading">
+                <h2 class="panel-title">Seller's Contact Information</h2>
+            </header>
+            <div class="panel-body">
+                <dl class="dl-horizontal">
+                    <dt><?= __('Email') ?>:</dt> <dd> <?= h($product->user->email) ?> </dd>
+                    <dt><?= __('Phone') ?>:</dt> <dd> <?= h($product->user->phone) ?> </dd>
+                </dl>
+            </div>
+        </section>
+    <?php endif; ?>
 </div>
 
 <?php if($userCanEdit): ?>
@@ -210,3 +247,26 @@
 
     </script>
 <?php endif; ?> 
+<script type="text/javascript">
+    
+    function notifyUser(productId){
+        $.ajax({
+            url: hostUrl+"/api/interestedUsers",
+            headers:{"accept":"application/json"},
+            dataType: 'json',
+            data:{
+                "product_id" : productId
+            },
+            type: "post",
+            success:function(response){
+                $('#notifyAlert').remove();
+                $('#notifiedAlert').removeAttr('hidden');
+            },
+            error:function(response){
+                alert('There was an error. Please Try again later.');
+                console.log('in error case of notify user.');
+                console.log(response);
+            },
+        });
+    }
+</script>

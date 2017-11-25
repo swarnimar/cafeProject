@@ -322,10 +322,10 @@ class UsersController extends AppController
     }
 
     public function dashboard(){
-      $hostUrl = $url = Router::url('/', true);
+      // $hostUrl = Router::url('/', true);
 
-      $this->set('hostUrl',$hostUrl);
-      $this->set('_serialize', ['hostUrl']);
+      // $this->set('hostUrl',$hostUrl);
+      $this->set('_serialize', []);
     }
 
     public function signUp()

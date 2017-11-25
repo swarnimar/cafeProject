@@ -61,38 +61,41 @@ $cakeDescription = 'Sell Start';
     <!-- start: page -->
     <?= $this->fetch('content') ?>
     <!-- end: page -->
+    <script type="text/javascript">
+        var hostUrl = "<?= $this->Url->build('/', true) ?>";
+    </script>
+    <!-- Validator -->
+        <script src="https://cdnjs.com/libraries/1000hz-bootstrap-validator"></script>
+
+    <!-- theme scripts -->
+
+
+        <!-- Vendor -->
+            <?= $this->Html->script([
+                                "plugins/jquery/jquery",
+                                "plugins/bootstrap/js/bootstrap",
+                                "plugins/jquery-browser-mobile/jquery.browser.mobile",
+                                "plugins/nanoscroller/nanoscroller",
+                                "plugins/bootstrap-datepicker/js/bootstrap-datepicker",
+                                "plugins/magnific-popup/magnific-popup",
+                                "plugins/jquery-placeholder/jquery.placeholder"
+                            ]) 
+            ?>
+        <!-- Theme Base, Components and Settings -->
+            <?= $this->Html->script([
+                                "theme",
+                                "theme.custom",
+                                "theme.init"
+                            ]) 
+            ?>
+
+    <?= $this->Html->script([
+                                // 'jquery-3.2.1.min', 
+                                // 'bootstrap.min',
+                                'user-management',
+                                '/js/plugins/validator/validator.js' 
+                            ]) 
+    ?>
 </body>
 
-<!-- Validator -->
-    <script src="https://cdnjs.com/libraries/1000hz-bootstrap-validator"></script>
-
-<!-- theme scripts -->
-
-
-    <!-- Vendor -->
-        <?= $this->Html->script([
-                            "plugins/jquery/jquery",
-                            "plugins/bootstrap/js/bootstrap",
-                            "plugins/jquery-browser-mobile/jquery.browser.mobile",
-                            "plugins/nanoscroller/nanoscroller",
-                            "plugins/bootstrap-datepicker/js/bootstrap-datepicker",
-                            "plugins/magnific-popup/magnific-popup",
-                            "plugins/jquery-placeholder/jquery.placeholder"
-                        ]) 
-        ?>
-    <!-- Theme Base, Components and Settings -->
-        <?= $this->Html->script([
-                            "theme",
-                            "theme.custom",
-                            "theme.init"
-                        ]) 
-        ?>
-
-<?= $this->Html->script([
-                            // 'jquery-3.2.1.min', 
-                            // 'bootstrap.min',
-                            'user-management',
-                            '/js/plugins/validator/validator.js' 
-                        ]) 
-?>
 </html>

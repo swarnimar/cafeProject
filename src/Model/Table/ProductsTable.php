@@ -61,6 +61,11 @@ class ProductsTable extends Table
             'dependent' => true,
             'cascadeCallBacks' => true
         ]);
+        $this->hasMany('InterestedUsers', [
+            'foreignKey' => 'product_id',
+            'dependent' => true,
+            'cascadeCallBacks' => true
+        ]);
     }
 
     /**

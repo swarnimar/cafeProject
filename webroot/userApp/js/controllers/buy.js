@@ -38,10 +38,8 @@ app.controller('BuyController', function ($window, $scope,$http,$state, Business
 	}
 	
 	$scope.selected= function(value1, value2){
-		if(value1 == value2){
-			return {'box-shadow':'0px 12px 22px 1px', 'border': '2px solid blue'};
-		}
-		return {'opacity': '1.0', 'filter': 'alpha(opacity=10)'};
+		
+		return ProductsFactory.selectedType(value1, value2);
 	}
 
 	$scope.$watch(function(){

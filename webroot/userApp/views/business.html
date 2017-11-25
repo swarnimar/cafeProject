@@ -5,10 +5,10 @@
     <div class="panel-body">
         <form ng-submit="next()" name="businessForm">
 
-            <div class="form-group">
-                <div class="col-md-4" ng-repeat="business in businesses">
-                    <label>
-                        <input type="radio" name="{{business.name}}" ng-show='false' ng-model="productAttributes.business" ng-value="business" ng-click="next()">
+            <div class="form-group col-md-4" ng-repeat="business in businesses">
+                <div>
+                    <label ng-dblclick="next()">
+                        <input type="radio" name="{{business.name}}" ng-show='false' ng-model="productAttributes.business" ng-value="business">
                         <div class="thumb-info mb-md" style="cursor:pointer;" ng-style="selected(business, productAttributes.business)">
                             <img src="{{host}}img/logged-user.jpg" class="rounded img-responsive cpBoxImage" ng-if="!business.image_url">
                             <img src="{{business.image_url}}" class="rounded img-responsive cpBoxImage" ng-if="business.image_url">

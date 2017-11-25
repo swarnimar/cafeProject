@@ -1,6 +1,6 @@
 <section class="panel">
-    <header class="panel-heading">
-        <span class= "col-sm-offset-10">
+    <header class="panel-heading text-right">
+        <span>
             <?=$this->Html->link('Add a New Business', ['action' => 'add'], ['class' => ['btn', 'btn-primary']])?>
         </span>
     </header>

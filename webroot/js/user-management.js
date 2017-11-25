@@ -1,5 +1,4 @@
 $(document).ready(function(){
-var host = $('#baseUrl').val();
 $('#saveUserPassword').on('click',function(event){
 	//alert('hh');
 	if($(this).hasClass('disabled')){
@@ -12,7 +11,7 @@ $('#saveUserPassword').on('click',function(event){
 		var cnfNewPwd = $('#cnf_new_pwd').val();
 		if(oldPwd && newPwd && cnfNewPwd && (newPwd == cnfNewPwd)){
 			$.ajax({
-				url: host+"api/users/updatePassword/"+userId,
+				url: hostUrl+"api/users/updatePassword/"+userId,
 				headers:{"accept":"application/json"},
 				dataType: 'json',
 				data:{
@@ -70,7 +69,7 @@ $('#saveUserPassword').on('click',function(event){
 
 		var username = $('#forgotUsername').val();
 		$.ajax({
-			url: host+"/api/users/resetPasswordLink/",
+			url: hostUrl+"/api/users/resetPasswordLink/",
 			headers:{"accept":"application/json"},
 			dataType: 'json',
 			data:{

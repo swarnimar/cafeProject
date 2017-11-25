@@ -1,11 +1,11 @@
 <section class="panel">
-    <header class="panel-heading">
-        <?php if($loggedInUser['role_id'] == 1): ?>    
-            <span class= "col-sm-offset-10">
-                <?=$this->Html->link('Add a New Product', ['action' => 'add'], ['class' => ['btn', 'btn-primary']])?>
-            </span>
-        <?php endif; ?> 
-    </header>
+    <?php if($loggedInUser['role_id'] == 1): ?>    
+        <header class="panel-heading text-right">
+                <span>
+                    <?=$this->Html->link('Add a New Product', ['action' => 'add'], ['class' => ['btn', 'btn-primary']])?>
+                </span>
+        </header>
+    <?php endif; ?> 
     <div class="panel-body">
         <div class="table-responsive">
             <table class="table mb-none">

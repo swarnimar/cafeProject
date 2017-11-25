@@ -6,7 +6,7 @@
 
         <div class="panel panel-sign">
             <div class="panel-title-sign mt-xl text-right">
-                <h2 class="title text-uppercase text-bold m-none"><i class="fa fa-user mr-xs"></i> Sign In</h2>
+                <h2 class="title text-uppercase text-bold m-none"><i class="fa fa-user mr-xs"></i> Sign Up</h2>
             </div>
             <div class="panel-body">
                 <?= $this->Form->create($user, ['data-toggle' => 'validator']); ?>
@@ -62,10 +62,10 @@
                         <span>or</span>
                     </span>
 
-                    <div class="mb-xs text-center">
+                    <!-- <div class="mb-xs text-center">
                         <a class="btn btn-facebook mb-md ml-xs mr-xs">Connect with <i class="fa fa-facebook"></i></a>
                         <a class="btn btn-twitter mb-md ml-xs mr-xs">Connect with <i class="fa fa-twitter"></i></a>
-                    </div>
+                    </div> -->
                     <p class="text-center">Already have an account?
                         <a href="<?= $this->Url->build(['controller' => 'users', 'action' => 'login']) ?>">
                             Sign In!
@@ -77,6 +77,6 @@
         </div>
         
 
-        <p class="text-center text-muted mt-md mb-md">&copy; Copyright 2014. All Rights Reserved.</p>
+        <p class="text-center text-muted mt-md mb-md">&copy; Copyright <?= ' '.(date("Y")-1).'-'.date("Y").' '?>. All Rights Reserved.</p>
     </div>
 </section>
