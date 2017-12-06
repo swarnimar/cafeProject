@@ -15,6 +15,12 @@
 			'class' => 'fa fa-usd',
 			'subMenu' => []
 		],
+		'Interested Buyers' => [
+			'active' => ($controller == 'InterestedUsers' && $action == 'index') ? true : false,
+			'url' => ['controller'=> 'InterestedUsers', 'action' => 'index'],
+			'class' => 'fa fa-child',
+			'subMenu' => []
+		],
 		'Manage Businesses' => [
 			'active' => in_array($controller, ['Businesses', 'ProductCategories', 'BusinessProductCategories']) ? true : false,
 			'url' => '#',

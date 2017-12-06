@@ -15,7 +15,7 @@
             </div>
         <section class="panel">
             <header class="panel-heading">
-                <h2 class="panel-title">Product Description</h2>
+                <h2 class="panel-title"><?= h($product->name) ?></h2>
             </header>
             <div class="panel-body">
                 <p>

@@ -75,7 +75,6 @@
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
       <?= $this->Form->create(null, ['class' => 'form-horizontal','data-toggle'=>"validator"]) ?>
-      <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
           <h4 class="modal-title"><?= __('FORGOT PASSWORD')?></h4>
@@ -102,7 +101,6 @@
           <?= $this->Form->button(__('Submit'), ['class' => ['btn', 'btn-primary'], 'type' => 'button','id'=>"forgotUserPassword"]) ?>
         </div>
         <?= $this->Form->end() ?>
-      </div>
     </div>
   </div>
 </div>

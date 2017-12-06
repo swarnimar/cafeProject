@@ -2,11 +2,12 @@
 namespace App\Controller;
 
 use App\Controller\AppController;
+use Cake\Collection\Collection;
 
 /**
  * InterestedUsers Controller
  *
- * @property \App\Model\Table\InterestedUsersTable $InterestedUsers
+ * @property \App\Model\Table\InterestedUsersTable $$interestedUserss
  *
  * @method \App\Model\Entity\InterestedUser[] paginate($object = null, array $settings = [])
  */
@@ -18,101 +19,36 @@ class InterestedUsersController extends AppController
      *
      * @return \Cake\Http\Response|void
      */
-    public function index()
-    {
-        $this->paginate = [
-            'contain' => ['Users', 'Products']
-        ];
-        $interestedUsers = $this->paginate($this->InterestedUsers);
+    public function index($id = null)
+    {   
+        $query = $this->InterestedUsers->find()->contain(['Users', 'Products.ProductImages']);
 
-        $this->set(compact('interestedUsers'));
-        $this->set('_serialize', ['interestedUsers']);
-    }
+        $requestQuery = $this->request->query;
+        $viewSeller = false;
+        $viewBuyer = false;
+        $loggedInUser = $this->Auth->user();
 
-    /**
-     * View method
-     *
-     * @param string|null $id Interested User id.
-     * @return \Cake\Http\Response|void
-     * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
-     */
-    public function view($id = null)
-    {
-        $interestedUser = $this->InterestedUsers->get($id, [
-            'contain' => ['Users', 'Products']
-        ]);
-
-        $this->set('interestedUser', $interestedUser);
-        $this->set('_serialize', ['interestedUser']);
-    }
-
-    /**
-     * Add method
-     *
-     * @return \Cake\Http\Response|null Redirects on successful add, renders view otherwise.
-     */
-    public function add()
-    {
-        $interestedUser = $this->InterestedUsers->newEntity();
-        if ($this->request->is('post')) {
-            $interestedUser = $this->InterestedUsers->patchEntity($interestedUser, $this->request->getData());
-            if ($this->InterestedUsers->save($interestedUser)) {
-                $this->Flash->success(__('The interested user has been saved.'));
-
-                return $this->redirect(['action' => 'index']);
-            }
-            $this->Flash->error(__('The interested user could not be saved. Please, try again.'));
-        }
-        $users = $this->InterestedUsers->Users->find('list', ['limit' => 200]);
-        $products = $this->InterestedUsers->Products->find('list', ['limit' => 200]);
-        $this->set(compact('interestedUser', 'users', 'products'));
-        $this->set('_serialize', ['interestedUser']);
-    }
-
-    /**
-     * Edit method
-     *
-     * @param string|null $id Interested User id.
-     * @return \Cake\Http\Response|null Redirects on successful edit, renders view otherwise.
-     * @throws \Cake\Network\Exception\NotFoundException When record not found.
-     */
-    public function edit($id = null)
-    {
-        $interestedUser = $this->InterestedUsers->get($id, [
-            'contain' => []
-        ]);
-        if ($this->request->is(['patch', 'post', 'put'])) {
-            $interestedUser = $this->InterestedUsers->patchEntity($interestedUser, $this->request->getData());
-            if ($this->InterestedUsers->save($interestedUser)) {
-                $this->Flash->success(__('The interested user has been saved.'));
-
-                return $this->redirect(['action' => 'index']);
-            }
-            $this->Flash->error(__('The interested user could not be saved. Please, try again.'));
-        }
-        $users = $this->InterestedUsers->Users->find('list', ['limit' => 200]);
-        $products = $this->InterestedUsers->Products->find('list', ['limit' => 200]);
-        $this->set(compact('interestedUser', 'users', 'products'));
-        $this->set('_serialize', ['interestedUser']);
-    }
-
-    /**
-     * Delete method
-     *
-     * @param string|null $id Interested User id.
-     * @return \Cake\Http\Response|null Redirects to index.
-     * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
-     */
-    public function delete($id = null)
-    {
-        $this->request->allowMethod(['post', 'delete']);
-        $interestedUser = $this->InterestedUsers->get($id);
-        if ($this->InterestedUsers->delete($interestedUser)) {
-            $this->Flash->success(__('The interested user has been deleted.'));
-        } else {
-            $this->Flash->error(__('The interested user could not be deleted. Please, try again.'));
+        if($this->Auth->user('role_id') == 1){
+            $interestedUsers = $query->contain(['Products.Users'])->all();
+        }elseif(isset($requestQuery['query']) && !in_array($requestQuery['query'], [null, false, ""]) && $requestQuery['query'] == 'liked'){
+            $interestedUsers = $query->contain(['Products.Users'])->where(['InterestedUsers.user_id' => $this->Auth->user('id')])->all();
+            $viewSeller = true;
+        }else{
+           $interestedUsers = $query->where(['Products.user_id' => $this->Auth->user('id')])->all();
+           $viewBuyer = true;
         }
 
-        return $this->redirect(['action' => 'index']);
+        if($loggedInUser['role_id'] == 1 || $viewBuyer){
+            $interestedUsers = $interestedUsers->groupBy('product_id')->map(function($value, $key){
+                $value[0]->users = (new Collection($value))->extract('user')->toArray();
+                unset($value[0]->user);
+                return $value[0];
+            })->toArray();
+            $interestedUsers = array_values($interestedUsers);
+        }
+
+
+        $this->set(compact('interestedUsers', 'viewSeller', 'viewBuyer','loggedInUser'));
+        $this->set('_serialize', ['interestedUser']);
     }
 }

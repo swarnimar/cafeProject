@@ -14,6 +14,7 @@
                         <th scope="col">S.No.</th>
                         <th scope="col">Business</th>
                         <th scope="col">Product Category</th>
+                        <th scope="col">Name</th>
                         <th scope="col">Manufacturer</th>
                         <th scope="col">Purchace Year</th>
                         <th scope="col">Actual Price</th>
@@ -28,6 +29,7 @@
                             <td><?= $this->Number->format($key+1) ?></td>
                             <td><?= h($value->business_product_category->business->name) ?></td>
                             <td><?= h($value->business_product_category->product_category->name) ?></td>
+                            <td><?= h($value->name) ?></td>
                             <td><?= h($value->manufacturer) ?></td>
                             <td><?= h($value->year_of_purchasing) ?></td>
                             <td><?= h($value->actual_price) ?></td>

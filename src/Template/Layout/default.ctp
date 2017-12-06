@@ -160,10 +160,6 @@ $cakeDescription = 'Sell Start';
                             ]) 
             ?>
 
-        <!--user App -->
-
-        
-
     <?= $this->Html->script([
                                 // 'jquery-3.2.1.min', 
                                 // 'bootstrap.min',

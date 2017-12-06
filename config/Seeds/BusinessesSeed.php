@@ -34,6 +34,11 @@ class BusinessesSeed extends AbstractSeed
                 'name' => 'Banquet',
                 'created' => date('Y-m-d H:i:s'),
                 'modified'=> date('Y-m-d H:i:s')
+            ],
+            [
+                'name' => 'Salon',
+                'created' => date('Y-m-d H:i:s'),
+                'modified'=> date('Y-m-d H:i:s')
             ]
 
         ];

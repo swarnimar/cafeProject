@@ -15,6 +15,18 @@
 			'class' => 'fa fa-usd',
 			'subMenu' => []
 		],
+		'Interested Buyers' => [
+			'active' => ($controller == 'InterestedUsers' && $action == 'index') ? true : false,
+			'url' => ['controller'=> 'InterestedUsers', 'action' => 'index'],
+			'class' => 'fa fa-child',
+			'subMenu' => []
+		],
+		'Liked Products' => [
+			'active' => ($controller == 'InterestedUsers' && $action == 'index') ? true : false,
+			'url' => ['controller'=> 'InterestedUsers', 'action' => 'index', '?' => ['query' => 'liked']],
+			'class' => 'fa fa-thumbs-o-up',
+			'subMenu' => []
+		]
 	];
 
 ?>

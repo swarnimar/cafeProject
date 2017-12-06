@@ -5,6 +5,13 @@
     <div class="panel-body">
         <form ng-submit="next()" name='productForm'>
          	<div class="form-group">
+                <label class="col-md-3 control-label" for="name"><h4>Name</h4></label>
+                <div class="col-md-6">
+                    <input type="text" name="name" required ng-model="product.name" class="form-control input-lg">
+                </div>
+            </div>
+            <hr>
+            <div class="form-group">
                 <label class="col-md-3 control-label" for="manufacturer"><h4>Manufacturer</h4></label>
                 <div class="col-md-6">
                  	<input type="text" name="manufacturer" required ng-model="product.manufacturer" class="form-control input-lg">

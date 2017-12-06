@@ -15,6 +15,12 @@
                     </div>
                 </div>
                 <div class="form-group">
+                  <label class="col-md-3 control-label" for="manufacturer">Name</label>
+                  <div class="col-md-6">
+                   <?= $this->Form->Html('name', ['label' => false, 'type'=>'text', 'maxlength' => 50, 'required' , 'class' => 'form-control']); ?>
+                  </div>
+                </div>
+                <div class="form-group">
                     <label class="col-md-3 control-label" for="manufacturer">Manufacturer</label>
                     <div class="col-md-6">
                        <?= $this->Form->Html('manufacturer', ['label' => false, 'type'=>'text', 'maxlength' => 50, 'required' , 'class' => 'form-control']); ?>
