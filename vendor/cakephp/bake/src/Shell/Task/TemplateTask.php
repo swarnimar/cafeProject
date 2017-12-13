@@ -26,6 +26,8 @@ use Cake\Utility\Inflector;
 /**
  * Task class for creating and updating view template files.
  *
+ * @property \Bake\Shell\Task\ModelTask $Model
+ * @property \Bake\Shell\Task\BakeTemplateTask $BakeTemplate
  */
 class TemplateTask extends BakeTask
 {
@@ -95,6 +97,13 @@ class TemplateTask extends BakeTask
      * @var AssociationFilter
      */
     protected $_associationFilter = null;
+
+    /**
+     * Template path.
+     *
+     * @var string
+     */
+    public $path;
 
     /**
      * Override initialize

@@ -18,6 +18,7 @@ use Cake\Core\App;
 use Cake\Database\ExpressionInterface;
 use Cake\Database\Expression\IdentifierExpression;
 use Cake\Datasource\EntityInterface;
+use Cake\Datasource\QueryInterface;
 use Cake\ORM\Association;
 use Cake\ORM\Association\Loader\SelectWithPivotLoader;
 use Cake\ORM\Query;
@@ -55,7 +56,7 @@ class BelongsToMany extends Association
      *
      * @var string
      */
-    protected $_joinType = 'INNER';
+    protected $_joinType = QueryInterface::JOIN_TYPE_INNER;
 
     /**
      * The strategy name to be used to fetch associated records.
@@ -608,7 +609,9 @@ class BelongsToMany extends Association
 
         $conditions = array_merge($conditions, $hasMany->getConditions());
 
-        return $table->deleteAll($conditions);
+        $table->deleteAll($conditions);
+
+        return true;
     }
 
     /**
@@ -1120,7 +1123,7 @@ class BelongsToMany extends Association
             $name => [
                 'table' => $this->junction()->getTable(),
                 'conditions' => $conditions,
-                'type' => 'INNER'
+                'type' => QueryInterface::JOIN_TYPE_INNER
             ]
         ];
 

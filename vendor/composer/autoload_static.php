@@ -26,6 +26,14 @@ class ComposerStaticInita1f1f1aff5be5208f83d769fdda6b8fa
         array (
             'XdgBaseDir\\' => 11,
         ),
+        'W' => 
+        array (
+            'WyriHaximus\\TwigView\\' => 21,
+        ),
+        'T' => 
+        array (
+            'Twig\\' => 5,
+        ),
         'S' => 
         array (
             'Symfony\\Polyfill\\Mbstring\\' => 26,
@@ -63,6 +71,7 @@ class ComposerStaticInita1f1f1aff5be5208f83d769fdda6b8fa
             'JsonSchema\\' => 11,
             'Josegonzalez\\Upload\\Test\\Fixture\\' => 33,
             'Josegonzalez\\Upload\\' => 20,
+            'Jasny\\Twig\\' => 11,
         ),
         'D' => 
         array (
@@ -90,6 +99,7 @@ class ComposerStaticInita1f1f1aff5be5208f83d769fdda6b8fa
             'Aura\\Intl\\' => 10,
             'App\\Test\\' => 9,
             'App\\' => 4,
+            'Ajgl\\Twig\\Extension\\' => 20,
         ),
     );
 
@@ -101,6 +111,14 @@ class ComposerStaticInita1f1f1aff5be5208f83d769fdda6b8fa
         'XdgBaseDir\\' => 
         array (
             0 => __DIR__ . '/..' . '/dnoegel/php-xdg-base-dir/src',
+        ),
+        'WyriHaximus\\TwigView\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/wyrihaximus/twig-view/src',
+        ),
+        'Twig\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/twig/twig/src',
         ),
         'Symfony\\Polyfill\\Mbstring\\' => 
         array (
@@ -194,6 +212,10 @@ class ComposerStaticInita1f1f1aff5be5208f83d769fdda6b8fa
         array (
             0 => __DIR__ . '/..' . '/josegonzalez/cakephp-upload/src',
         ),
+        'Jasny\\Twig\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/jasny/twig-extensions/src',
+        ),
         'DebugKit\\Test\\Fixture\\' => 
         array (
             0 => __DIR__ . '/..' . '/cakephp/debug_kit/tests/Fixture',
@@ -254,6 +276,14 @@ class ComposerStaticInita1f1f1aff5be5208f83d769fdda6b8fa
         array (
             0 => __DIR__ . '/../..' . '/src',
         ),
+        'Ajgl\\Twig\\Extension\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/ajgl/breakpoint-twig-extension/src',
+        ),
+    );
+
+    public static $fallbackDirsPsr4 = array (
+        0 => __DIR__ . '/..' . '/asm89/twig-cache-extension/lib',
     );
 
     public static $prefixesPsr0 = array (
@@ -263,6 +293,20 @@ class ComposerStaticInita1f1f1aff5be5208f83d769fdda6b8fa
             array (
                 0 => __DIR__ . '/..' . '/josegonzalez/dotenv/src',
                 1 => __DIR__ . '/..' . '/josegonzalez/dotenv/tests',
+            ),
+        ),
+        'U' => 
+        array (
+            'Umpirsky\\' => 
+            array (
+                0 => __DIR__ . '/..' . '/umpirsky/twig-php-function/src',
+            ),
+        ),
+        'T' => 
+        array (
+            'Twig_' => 
+            array (
+                0 => __DIR__ . '/..' . '/twig/twig/lib',
             ),
         ),
         'J' => 
@@ -283,6 +327,13 @@ class ComposerStaticInita1f1f1aff5be5208f83d769fdda6b8fa
                 0 => __DIR__ . '/..' . '/mobiledetect/mobiledetectlib/namespaced',
             ),
         ),
+        'A' => 
+        array (
+            'Aptoma' => 
+            array (
+                0 => __DIR__ . '/..' . '/aptoma/twig-markdown/src',
+            ),
+        ),
     );
 
     public static $classMap = array (
@@ -295,6 +346,7 @@ class ComposerStaticInita1f1f1aff5be5208f83d769fdda6b8fa
         return \Closure::bind(function () use ($loader) {
             $loader->prefixLengthsPsr4 = ComposerStaticInita1f1f1aff5be5208f83d769fdda6b8fa::$prefixLengthsPsr4;
             $loader->prefixDirsPsr4 = ComposerStaticInita1f1f1aff5be5208f83d769fdda6b8fa::$prefixDirsPsr4;
+            $loader->fallbackDirsPsr4 = ComposerStaticInita1f1f1aff5be5208f83d769fdda6b8fa::$fallbackDirsPsr4;
             $loader->prefixesPsr0 = ComposerStaticInita1f1f1aff5be5208f83d769fdda6b8fa::$prefixesPsr0;
             $loader->classMap = ComposerStaticInita1f1f1aff5be5208f83d769fdda6b8fa::$classMap;
 

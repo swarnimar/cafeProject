@@ -24,6 +24,7 @@ use Cake\Utility\Inflector;
 /**
  * The Plugin Task handles creating an empty plugin, ready to be used
  *
+ * @property \Bake\Shell\Task\BakeTemplateTask $BakeTemplate
  */
 class PluginTask extends BakeTask
 {
@@ -42,6 +43,13 @@ class PluginTask extends BakeTask
     public $tasks = [
         'Bake.BakeTemplate'
     ];
+
+    /**
+     * Plugin path.
+     *
+     * @var string
+     */
+    public $path;
 
     /**
      * initialize
@@ -192,12 +200,13 @@ class PluginTask extends BakeTask
         do {
             $templatesPath = array_shift($paths) . 'Bake/Plugin';
             $templatesDir = new Folder($templatesPath);
-            $templates = $templatesDir->findRecursive('.*\.ctp');
+            $templates = $templatesDir->findRecursive('.*\.(twig|ctp)');
         } while (!$templates);
 
         sort($templates);
         foreach ($templates as $template) {
             $template = substr($template, strrpos($template, 'Plugin') + 7, -4);
+            $template = rtrim($template, '.');
             $this->_generateFile($template, $root);
         }
     }
@@ -314,6 +323,7 @@ class PluginTask extends BakeTask
             return;
         }
 
+        $choice = null;
         while (!$valid) {
             foreach ($pathOptions as $i => $option) {
                 $this->out($i + 1 . '. ' . $option);
