@@ -5,6 +5,7 @@ use App\Controller\AppController;
 use Cake\Auth\DefaultPasswordHasher;
 use Cake\Routing\Router;
 use Cake\Network\Session;
+use Cake\Core\Configure;
 
 /**
  * Users Controller
@@ -18,7 +19,7 @@ class UsersController extends AppController
 
     public function initialize(){
         parent::initialize();
-        $this->Auth->allow(['login', 'logout', 'resetPassword', 'signUp']);
+        $this->Auth->allow(['login','socialLogin' ,'logout', 'resetPassword', 'signUp']);
     }
     /**
      * Index method
@@ -143,43 +144,59 @@ class UsersController extends AppController
         return $this->redirect(['action' => 'index']);
     }
 
-    public function login(){
+    public function socialLogin(){
+      if ($this->request->is('post')) {
+        $this->_loginUser();
+      }
+    }
 
-        if ($this->request->is('post')) {
-            $user = $this->Auth->identify();
-            if ($user) {
-                $this->Auth->setUser($user);
-                $role = $this->Users->Roles->findById($user['role_id'])
-                                                  ->first();
-                if($role){
-                  $user['role'] = $role;
-                  $this->Auth->setUser($user);
-                  $session = new Session();
-                  if(isset($role->login_redirect_url) && $role->login_redirect_url){
+    private function _loginUser(){
+        
+      $user = $this->Auth->identify();
+      if ($user) {
+          $role = $this->Users->Roles->findById($user['role_id'])
+                                            ->first();
+          if($role){
+            $user['role'] = $role;
+            $this->Auth->setUser($user);
+            $session = new Session();
+            if(isset($role->login_redirect_url) && $role->login_redirect_url){
 
-                    $url = Router::url('/', true);
-                    $url = $url.$role->login_redirect_url;
-                    
-                    return $this->redirect($url);
+              $url = Router::url('/', true);
+              $url = $url.$role->login_redirect_url;
+              
+              return $this->redirect($url);
 
-                  }else{
-                    
-                    return $this->redirect(['action' => 'index']);
-                  }
-                
-                }else{
-                   $this->Flash->error(__('Role not found'));
-                   return $this->logout(); 
-                }
-            } else {
-                $this->Flash->error(__('Username or password is incorrect'));
+            }else{
+              return $this->redirect(['action' => 'index']);
             }
-        }  
+          
+          }else{
+             $this->Flash->error(__('Role not found'));
+             return $this->logout(); 
+          }
+      } else {
+          $this->Flash->error(__('Unable to identify user.'));
+      }
 
-        $loginData = [];
-        $this->viewBuilder()->layout('login');
-        $this->set(compact('loginData'));
-        $this->set('_serialize', ['loginData']);
+        
+    }
+
+    public function login(){
+      if ($this->request->is('post')) {
+        $this->_loginUser();
+      }
+
+      $user = $this->Auth->identify();
+      if($user){
+        $this->_loginUser();
+      }
+
+      $loginData = [];
+      $this->viewBuilder()->layout('login');
+      $this->set(compact('loginData'));
+      $this->set('_serialize', ['loginData']);
+
     }
 
 

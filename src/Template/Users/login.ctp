@@ -46,24 +46,29 @@
                             <button type="submit" class="btn btn-primary btn-block btn-lg visible-xs mt-lg">Sign In</button>
                         </div>
                     </div>
-
-                    <span class="mt-lg mb-lg line-thru text-center text-uppercase">
-                        <span>or</span>
-                    </span>
-
-                    <!-- <div class="mb-xs text-center">
-                        <a class="btn btn-facebook mb-md ml-xs mr-xs">Connect with <i class="fa fa-facebook"></i></a>
-                        <a class="btn btn-twitter mb-md ml-xs mr-xs">Connect with <i class="fa fa-twitter"></i></a>
-                    </div> -->
-
-                    <p class="text-center">Don't have an account yet? 
-                      <a href="<?= $this->Url->build(['controller' => 'users', 'action' => 'signUp']) ?>">
-                        Sign Up!
-                      </a>  
-                      <!-- <a href="pages-signup.html">Sign Up!</a> -->
-                    </p>
-
                 <?= $this->Form->end() ?>
+
+                <span class="mt-lg mb-lg line-thru text-center text-uppercase">
+                    <span>or</span>
+                </span>
+
+                <div class="mb-xs text-center">
+                    <?php echo $this->Form->postLink(
+                        'Connect with '.$this->Html->tag('i', '', array('class' => 'fa fa-facebook')),
+                        ['controller' => 'Users', 'action' => 'socialLogin', '?' => ['provider' => 'Facebook']],
+                        ['class' => ['btn', 'btn-facebook', 'mb-md', 'ml-xs', 'mr-xs'], 'escape'=>false]
+                    ); ?>
+                    <!-- <a class="btn btn-facebook mb-md ml-xs mr-xs">Connect with <i class="fa fa-facebook"></i></a>
+                    <a class="btn btn-twitter mb-md ml-xs mr-xs">Connect with <i class="fa fa-twitter"></i></a> -->
+                </div>
+
+                <p class="text-center">Don't have an account yet? 
+                  <a href="<?= $this->Url->build(['controller' => 'users', 'action' => 'signUp']) ?>">
+                    Sign Up!
+                  </a>  
+                  <!-- <a href="pages-signup.html">Sign Up!</a> -->
+                </p>
+
             </div>
         </div>
 

@@ -11,7 +11,8 @@
         "cakephp/migrations": "~1.0",
         "cakephp/plugin-installer": "~1.0",
         "josegonzalez/dotenv": "2.*",
-        "josegonzalez/cakephp-upload": "^3.6"
+        "josegonzalez/cakephp-upload": "^3.6",
+        "admad/cakephp-hybridauth": "^4.1"
     },
     "require-dev": {
         "psy/psysh": "@stable",

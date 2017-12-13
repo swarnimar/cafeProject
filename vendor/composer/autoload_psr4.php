@@ -34,6 +34,7 @@ return array(
     'Josegonzalez\\Upload\\Test\\Fixture\\' => array($vendorDir . '/josegonzalez/cakephp-upload/tests/Fixture'),
     'Josegonzalez\\Upload\\' => array($vendorDir . '/josegonzalez/cakephp-upload/src'),
     'Jasny\\Twig\\' => array($vendorDir . '/jasny/twig-extensions/src'),
+    'Facebook\\' => array($vendorDir . '/facebook/graph-sdk/src/Facebook'),
     'DebugKit\\Test\\Fixture\\' => array($vendorDir . '/cakephp/debug_kit/tests/Fixture'),
     'DebugKit\\' => array($vendorDir . '/cakephp/debug_kit/src'),
     'Composer\\Spdx\\' => array($vendorDir . '/composer/spdx-licenses/src'),
@@ -50,5 +51,6 @@ return array(
     'App\\Test\\' => array($baseDir . '/tests'),
     'App\\' => array($baseDir . '/src'),
     'Ajgl\\Twig\\Extension\\' => array($vendorDir . '/ajgl/breakpoint-twig-extension/src'),
+    'ADmad\\HybridAuth\\' => array($vendorDir . '/admad/cakephp-hybridauth/src'),
     '' => array($vendorDir . '/asm89/twig-cache-extension/lib'),
 );

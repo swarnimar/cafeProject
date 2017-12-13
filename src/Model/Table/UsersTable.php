@@ -59,6 +59,36 @@ class UsersTable extends Table
         $this->hasMany('UserOldPasswords', [
             'foreignKey' => 'user_id'
         ]);
+
+        $this->hasMany('ADmad/HybridAuth.SocialProfiles');
+
+        \Cake\Event\EventManager::instance()->on('HybridAuth.newUser', [$this, 'createUser']);
+    }
+
+    public function createUser(\Cake\Event\Event $event) {
+        // Entity representing record in social_profiles table
+        $profile = $event->data()['profile'];
+        
+        // Make sure here that all the required fields are actually present
+        $data = [
+          'email' => $profile->email,
+          'first_name' => $profile->first_name,
+          'last_name' => $profile->last_name,
+          'password' => $this->getPassword(),
+          'status' => 1,
+          'role_id' => 2
+        ];
+
+        $data['username'] = $this->getUsername($data);
+
+        $user = $this->newEntity($data);
+        $user = $this->save($user);
+
+        if (!$user) {
+            throw new \RuntimeException('Unable to save new user');
+        }
+
+        return $user;
     }
 
     /**
@@ -135,9 +165,7 @@ class UsersTable extends Table
     }
 
     public function beforeSave( \Cake\Event\Event $event, $entity, \ArrayObject $options){
-      pr('here');
       if ($entity->isNew()){
-           pr('here2');
            $entity->uuid = Text::uuid();
        }
     }
