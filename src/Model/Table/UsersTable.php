@@ -68,7 +68,7 @@ class UsersTable extends Table
     public function createUser(\Cake\Event\Event $event) {
         // Entity representing record in social_profiles table
         $profile = $event->data()['profile'];
-        
+
         // Make sure here that all the required fields are actually present
         $data = [
           'email' => $profile->email,
@@ -78,6 +78,10 @@ class UsersTable extends Table
           'status' => 1,
           'role_id' => 2
         ];
+
+        if(isset($profile->phone) && !in_array($profile->phone, [null, false, ''])){
+         $data['phone'] = $profile->phone;          
+        }
 
         $data['username'] = $this->getUsername($data);
 
