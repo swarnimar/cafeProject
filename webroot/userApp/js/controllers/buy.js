@@ -37,9 +37,9 @@ app.controller('BuyController', function ($window, $scope,$http,$state, Business
 		
 	}
 	
-	$scope.selected= function(value1, value2){
+	$scope.selected= function(value1, value2, type){
 		
-		return ProductsFactory.selectedType(value1, value2);
+		return ProductsFactory.selectedType(value1, value2, type);
 	}
 
 	$scope.$watch(function(){

@@ -345,6 +345,16 @@ class UsersController extends AppController
       $this->set('_serialize', []);
     }
 
+    public function privacyPolicy(){
+      $this->viewBuilder()->layout('login');
+      $this->set('_serialize', []);
+    }
+
+    public function termsOfUse(){
+      $this->viewBuilder()->layout('login');
+      $this->set('_serialize', []);
+    }
+
     public function signUp()
     {   
         $this->viewBuilder()->layout('login');

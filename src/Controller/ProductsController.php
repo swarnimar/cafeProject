@@ -40,11 +40,11 @@ class ProductsController extends AppController
 
         }elseif(isset($requestQuery['productType']) && $requestQuery['productType'] == 'myProducts'){
             
-            $products = $query->where(['user_id' => $this->Auth->user('id')])->all();
+            $products = $query->where(['user_id' => $this->Auth->user('id')])->order('Products.created DESC')->all();
         
         }else{
         
-            $products = $query->all();
+            $products = $query->order('Products.created DESC')->all();
         }
 
         $loggedInUser = $this->Auth->user();

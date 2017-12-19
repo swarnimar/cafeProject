@@ -9,11 +9,13 @@
                 <div>
                     <label ng-dblclick="next()">
                         <input type="radio" name="{{business.name}}" ng-show='false' ng-model="productAttributes.business" ng-value="business">
-                        <div class="thumb-info mb-md" style="cursor:pointer;" ng-style="selected(business, productAttributes.business)">
-                            <img src="{{host}}img/logged-user.jpg" class="rounded img-responsive cpBoxImage" ng-if="!business.image_url">
-                            <img src="{{business.image_url}}" class="rounded img-responsive cpBoxImage" ng-if="business.image_url">
+                        <div class="thumb-info mb-md" style="cursor:pointer;" ng-style="selected(business, productAttributes.business, 'div')">
+                            <img src="{{host}}img/logged-user.jpg" class="rounded img-responsive cpBoxImage" ng-if="!business.image_url" ng-style="selected(business, productAttributes.business, 'img')">
+                            <img src="{{business.image_url}}" class="rounded img-responsive cpBoxImage" ng-if="business.image_url" ng-style="selected(business, productAttributes.business, 'img')">
                             <div class="thumb-info-title">
                                 <span class="thumb-info-type">{{business.name}}</span>
+                            </div>
+                            <div ng-style="selected(business, productAttributes.business, 'overlay')">
                             </div>
                         </div>
                     </label>

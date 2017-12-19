@@ -75,8 +75,6 @@
                 <?= $this->Form->end() ?>
             </div>
         </div>
-        
-
-        <p class="text-center text-muted mt-md mb-md">&copy; Copyright <?= ' '.(date("Y")-1).'-'.date("Y").' '?>. All Rights Reserved.</p>
+        <?= $this->element('footer') ?>
     </div>
 </section>

@@ -79,11 +79,29 @@ app.factory('ProductsFactory', function($http,host, $resource, $state){
 		console.log(factory.product);
 	}
 
-	factory.selectedType = function(value1, value2){
+	factory.selectedType = function(value1, value2, type){
 		if(value1 == value2){
-			return {'box-shadow':'0px 12px 22px 1px', 'border': '1px solid blue'};
+			switch(type) {
+			    case 'div':
+		        	return {'width':'100%', 'height':'100%', 'float':'left', 'overflow':'hidden', 'position':'relative', 'text-align':'center', 'cursor':'default'}
+			    case 'img':
+			        return {'display':'block', 'position':'relative', '-webkit-transition':'all .4s linear', 'transition':'all .4s linear','-ms-transform':'scale(1.2)', '-webkit-transform':'scale(1.2)', 'transform':'scale(1.2)'};
+			    case 'overlay':
+		        	return {'width':'100%', 'filter':'alpha(opacity=100)', 'height':'100%', 'position':'absolute', 'overflow':'hidden', 'top':'0', 'left':'0', 'opacity':'1', 'background-color':'rgba(0,0,0,0.5)', '-webkit-transition':'all .4s ease-in-out', 'transition':'all .4s ease-in-out'};
+
+			} 
+			// return {'box-shadow':'0px 12px 22px 1px', 'border': '1px solid blue'};
 		}
-		return {'opacity': '1.0', 'filter': 'alpha(opacity=10)', 'border': '1px solid white'};
+
+		switch(type) {
+		    case 'div':
+		        return {'width':'100%', 'height':'100%', 'float':'left', 'overflow':'hidden', 'position':'relative', 'text-align':'center', 'cursor':'default'}
+		    case 'img':
+		        return {'display':'block', 'position':'relative', '-webkit-transition':'all .4s linear', 'transition':'all .4s linear'};
+		    case 'overlay':
+		        return {'width':'100%', 'height':'100%', 'position':'absolute', 'overflow':'hidden', 'top':'0', 'left':'0', 'opacity':'0', 'background-color':'rgba(0,0,0,0.5)', '-webkit-transition':'all .4s ease-in-out', 'transition':'all .4s ease-in-out'};
+		}
+		// return {'opacity': '1.0', 'filter': 'alpha(opacity=10)', 'border': '1px solid white'};
 	}
 
 	return factory;

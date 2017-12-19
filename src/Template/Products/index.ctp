@@ -7,46 +7,51 @@
         </header>
     <?php endif; ?> 
     <div class="panel-body">
-        <div class="table-responsive">
-            <table class="table mb-none">
-                <thead>
-                    <tr>
-                        <th scope="col">S.No.</th>
-                        <th scope="col">Business</th>
-                        <th scope="col">Product Category</th>
-                        <th scope="col">Name</th>
-                        <th scope="col">Manufacturer</th>
-                        <th scope="col">Purchace Year</th>
-                        <th scope="col">Actual Price</th>
-                        <th scope="col">Asking Price</th>
-                        <th scope="col">Posted On</th>
-                        <th scope="col" class="actions"><?= __('Actions') ?></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php foreach ($products as $key => $value): ?>
-                        <tr>
-                            <td><?= $this->Number->format($key+1) ?></td>
-                            <td><?= h($value->business_product_category->business->name) ?></td>
-                            <td><?= h($value->business_product_category->product_category->name) ?></td>
-                            <td><?= h($value->name) ?></td>
-                            <td><?= h($value->manufacturer) ?></td>
-                            <td><?= h($value->year_of_purchasing) ?></td>
-                            <td><?= h($value->actual_price) ?></td>
-                            <td><?= h($value->asking_price) ?></td>
-                            <td><?= h($value->created) ?></td>
-                            <td class="actions">
-                                <?= '<a href="'.$this->Url->build(['action' => 'view', $value->id]).'"><i class="fa fa-eye"></i></a>' ?>
-                                <?php if($loggedInUser['role_id'] == 1 || $loggedInUser['id'] == $value->user_id):?>
-                                    <?= '<a href="'.$this->Url->build(['action' => 'edit', $value->id]).'"><i class="fa fa-pencil"></i></a>' ?>
-                                    <!-- <?= '<a href="'.$this->Url->build(['action' => 'delete', $value->id]).'"><i class="fa fa-trash-o"></i></a>' ?> -->
-                                    <?= $this->Form->postLink(__(''), ['action' => 'delete', $value->id], ['confirm' => __('Are you sure you want to delete {0}?', $value->name), 'class' => ['fa', 'fa-trash-o']]) ?>
-                                <?php endif; ?> 
-                            </td>
-                        </tr>
-                    <?php endforeach; ?>
-                </tbody>
-            </table>
+        <div class="row">
+            <?php foreach ($products as $key => $value): ?>
+                <div class="col-sm-12">
+                    <section class="panel panel-featured-bottom panel-featured-primary">
+                        <div class="panel-body">
+                            <div class="widget-summary">
+                                <div class="widget-summary-col widget-summary-col-icon">
+                                        <?php if(!empty($value->product_images) && $value->product_images[0]->image_url): ?>
+                                            <div class="summary-icon">
+                                                <img class="img-circle" src="<?= $value->product_images[0]->image_url ?>" style="max-width: 100%; max-height: 100%; height: 100%; width: 100%">
+                                            </div>
+                                        <?php else: ?>
+                                            <div class="summary-icon bg-primary">
+                                                <i class="fa fa-life-ring"></i>
+                                            </div>
+                                        <?php endif; ?>
+                                </div>
+                                <div class="widget-summary-col">
+                                    <div class="summary">
+                                        <h4 class="amount">
+                                            <?=$value->name?>
+                                            <span class="text-success">(<?=$value->manufacturer?>)</span>
+                                        </h4>
+                                        <div class="info">
+                                            <span><?=$value->business_product_category->business->name?> - <?=$value->business_product_category->product_category->name?></span><br>
+                                            <strong class="title">
+                                                <b>Asking Price :</b> Rs. <?= $value->asking_price?>
+                                                <b>Actual Price :</b> Rs. <?= $value->actual_price?>
+                                            </strong>
+                                        </div>
+                                    </div>
+                                    <div class="summary-footer">
+                                        <?= '<a href="'.$this->Url->build(['action' => 'view', $value->id]).'" class="btn btn-warning">View</a>' ?>
+                                        <?php if($loggedInUser['role_id'] == 1 || $loggedInUser['id'] == $value->user_id):?>
+                                            <?= '<a href="'.$this->Url->build(['action' => 'edit', $value->id]).'" class="btn btn-primary">Edit</a>' ?>
+                                            <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $value->id], ['confirm' => __('Are you sure you want to delete {0}?', $value->name), 'class' => ['btn', 'btn-danger']]) ?>
+                                        <?php endif; ?> 
+                                        <!-- <a class="text-muted text-uppercase">(view all)</a> -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            <?php endforeach; ?>
         </div>
     </div>
 </section>

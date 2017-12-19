@@ -55,6 +55,8 @@ Router::scope('/', function (RouteBuilder $routes) {
      * ...and connect the rest of 'Pages' controller's URLs.
      */
     $routes->connect('/pages/*', ['controller' => 'Pages', 'action' => 'display']);
+    $routes->connect('/privacy-policy', ['controller' => 'Users', 'action' => 'privacyPolicy']);
+    $routes->connect('/terms-of-use', ['controller' => 'Users', 'action' => 'termsOfUse']);
 
     $routes->prefix('api', function ($routes) {
       $routes->connect('/:controller',array('controller'=>':controller', 'action'=>'add',"_method" => "POST"));
