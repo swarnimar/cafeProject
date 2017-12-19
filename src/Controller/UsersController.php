@@ -19,7 +19,7 @@ class UsersController extends AppController
 
     public function initialize(){
         parent::initialize();
-        $this->Auth->allow(['login','socialLogin' ,'logout', 'resetPassword', 'signUp']);
+        $this->Auth->allow(['login','socialLogin' ,'logout', 'resetPassword', 'signUp' , 'privacyPolicy', 'termsOfUse']);
     }
     /**
      * Index method
