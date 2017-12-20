@@ -7,8 +7,8 @@
 
             <div class="form-group col-md-4" ng-repeat="business in businesses">
                 <div>
-                    <label ng-dblclick="next()">
-                        <input type="radio" name="{{business.name}}" ng-show='false' ng-model="productAttributes.business" ng-value="business">
+                    <label>
+                        <input type="radio" name="{{business.name}}" ng-show='false' ng-model="productAttributes.business" ng-value="business" ios-dblclick="next()">
                         <div class="thumb-info mb-md" style="cursor:pointer;" ng-style="selected(business, productAttributes.business, 'div')">
                             <img src="{{host}}img/logged-user.jpg" class="rounded img-responsive cpBoxImage" ng-if="!business.image_url" ng-style="selected(business, productAttributes.business, 'img')">
                             <img src="{{business.image_url}}" class="rounded img-responsive cpBoxImage" ng-if="business.image_url" ng-style="selected(business, productAttributes.business, 'img')">

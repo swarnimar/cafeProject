@@ -21,6 +21,12 @@
 			'class' => 'fa fa-child',
 			'subMenu' => []
 		],
+		'Issues' => [
+			'active' => ($controller == 'Issues' && $action == 'index') ? true : false,
+			'url' => ['controller'=> 'Issues', 'action' => 'index'],
+			'class' => 'fa fa-exclamation-circle',
+			'subMenu' => []
+		],
 		'Manage Businesses' => [
 			'active' => in_array($controller, ['Businesses', 'ProductCategories', 'BusinessProductCategories']) ? true : false,
 			'url' => '#',

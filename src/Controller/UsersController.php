@@ -102,18 +102,25 @@ class UsersController extends AppController
             'contain' => []
         ]);
 
+        $loggedInUser = $this->Auth->user();
+        $redirectAction = $loggedInUser['role_id'] == 1 ? 'index' : 'dashboard';
+
         if ($this->request->is(['patch', 'post', 'put'])) {
             $user = $this->Users->patchEntity($user, $this->request->getData());
+            if(isset($this->request->data['role_id']) && $this->request->data['role_id'] != $loggedInUser['role_id'] && $loggedInUser['role_id'] != 1){
+              $this->Flash->error(__('You are not authorized to do that.'));
+              return $this->redirect(['action' => $redirectAction]);
+            }
 
             if ($this->Users->save($user)) {
-                $this->Flash->success(__('The user has been saved.'));
-                return $this->redirect(['action' => 'index']);
+                $this->Flash->success(__('The information has been updated.'));
+                return $this->redirect(['action' => $redirectAction]);
             }
             $this->Flash->error(__('The user could not be saved. Please, try again.'));
         }
 
         $roles = $this->Users->Roles->find()->all()->combine('id', 'label');
-        $this->set(compact('user', 'roles'));
+        $this->set(compact('user', 'roles', 'loggedInUser'));
         $this->set('_serialize', ['user']);
     }
 

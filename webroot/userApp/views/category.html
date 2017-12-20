@@ -6,8 +6,8 @@
         <form ng-submit="categoryButtonText == 'Next' ? next() : search()" name="categoryForm">
         <div class="row">
             <div class="form-group col-md-4" ng-repeat="category in productAttributes.business.business_product_categories">
-                <label ng-dblclick="categoryButtonText == 'Next' ? next() : search()">
-                    <input type="radio" name="{{category.product_category.name}}" ng-show='false' ng-model="product.business_product_category_id" ng-value="category.id">
+                <label>
+                    <input type="radio" name="{{category.product_category.name}}" ng-show='false' ng-model="product.business_product_category_id" ng-value="category.id" ios-dblclick="categoryButtonText == 'Next' ? next() : search()">
                     <div class="thumb-info mb-md" style="cursor:pointer;" ng-style="selected(category.id, product.business_product_category_id, 'div')">
                         <img src="{{host}}img/logged-user.jpg" class="rounded img-responsive cpBoxImage" ng-if="!category.product_category.image_url" ng-style="selected(category.id, product.business_product_category_id, 'img')">
                         <img src="{{category.product_category.image_url}}" class="rounded img-responsive cpBoxImage" ng-if="category.product_category.image_url" ng-style="selected(category.id, product.business_product_category_id, 'img')">

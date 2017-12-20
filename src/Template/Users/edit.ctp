@@ -1,50 +1,65 @@
-<?php
-/**
-* @var \App\View\AppView $this
-*/
-?>
-<div class="users form large-9 medium-8 columns content">
-  <?= $this->Form->create($user) ?>
-    <h3>
-      <u><?= __('Edit User') ?></u>
+<div class="row">
+  <div class="col-lg-12">
+    <div class="panel-body">
       <span class="pull-right">
-        <?=$this->Form->button('Gen. Reset Password Link', ['type' => 'button', 'id' => 'forgotUserPassword','class' => ['btn', 'btn-primary']])?>
+        <?php if($loggedInUser['role_id'] == 1): ?>
+          <?=$this->Form->button('Gen. Reset Password Link', ['type' => 'button', 'id' => 'forgotUserPassword','class' => ['btn', 'btn-primary']])?>
+        <?php else: ?>  
+          <button type="button" class="btn btn-warning btn-md" data-toggle="modal" data-target="#changePassword">Change Password</button>
+        <?php endif; ?>  
       </span>
-    </h3>
-    <div class="form-group">
-      <label for="first_name">First Name:</label>
-      <?= $this->Form->input('first_name', ['class' => 'form-control', 'label' => false, 'placeholder' => 'first name', 'required'=>'required']); ?>
     </div>
-    <div class="form-group">
-      <label for="last_name">Last Name:</label>
-      <?= $this->Form->input('last_name', ['class' => 'form-control', 'label' => false, 'placeholder' => 'last name', 'required'=>'required']); ?>
+    <div class="panel-body">
+      <?= $this->Form->create($user, ['class' => ['form-horizontal', "form-bordered"]]) ?>
+      <div class="form-group">
+        <label class="col-md-3 control-label" for="first_name">First Name</label>
+        <div class="col-md-6">
+          <?= $this->Form->Html('first_name', ['class' => 'form-control', 'label' => false, 'placeholder' => 'first name', 'required']); ?>          
+        </div>
+      </div>
+      <div class="form-group">
+        <label  class="col-md-3 control-label" for="last_name">Last Name</label>
+        <div class="col-md-6">
+          <?= $this->Form->Html('last_name', ['class' => 'form-control', 'label' => false, 'placeholder' => 'last name', 'required']); ?>        
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="col-md-3 control-label" for="email">Email address</label>
+        <div class="col-md-6">
+          <?= $this->Form->Html('email', ['class' => 'form-control', 'label' => false, 'placeholder' => 'email', 'required']); ?>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="col-md-3 control-label" for="phone">Phone</label>
+        <div class="col-md-6">
+          <?= $this->Form->Html('phone', ['class' => 'form-control', 'label' => false, 'placeholder' => 'phone']); ?>
+        </div>
+      </div>
+      <?php if($loggedInUser['role_id'] == 1): ?>
+        <div class="form-group">
+          <label class="col-md-3 control-label" for="role">Role</label>
+          <div class="col-md-6">
+            <?= $this->Form->control('role_id', ['label' => false,'required' , 'class' => 'form-control', 'options' => $roles]); ?>
+          </div>
+        </div>
+        <div class="form-group">   
+            <label class="col-md-6 control-label">
+                <?= $this->Form->checkbox('status', ['label' => false]); ?> Active
+            </label>
+        </div>
+      <?php endif; ?>  
+      <?= $this->Form->hidden('userId', ['label' => false, 'value'=> $user->id, 'required' => true, 'class' => ['form-control']]); ?>
+      <?= $this->Form->hidden('forgotUsername', ['label' => false, 'id' => 'forgotUsername','value'=> $user->username, 'required' => true, 'class' => ['form-control']]); ?>
+      <div class="form-group">
+        <div class="text-center">
+          <?= $this->Form->button(__('Submit'), ['class' => ['btn', 'btn-primary']]) ?>
+          <?= $this->Html->link('Cancel',$this->request->referer(),['class' => ['btn', 'btn-danger']]);?>
+        </div>
+      </div> 
+      <?= $this->Form->end() ?>    
     </div>
-    <div class="form-group">
-      <label for="email">Email address:</label>
-      <?= $this->Form->input('email', ['class' => 'form-control', 'label' => false, 'placeholder' => 'email', 'required'=>'required']); ?>
-    </div>
-    <div class="form-group">
-        <label for="role">Role:</label>
-        <?= $this->Form->input('role_id', ['label' => false, 'required' => true, 'class' => ['form-control']]); ?>
-    </div>
-     <div class="form-group">   
-        <label class="text-center">
-            <?= $this->Form->checkbox('status', ['label' => false]); ?> Active
-        </label>
-    </div>
-    <?= $this->Form->hidden('userId', ['label' => false, 'value'=> $user->id, 'required' => true, 'class' => ['form-control']]); ?>
-    <?= $this->Form->hidden('forgotUsername', ['label' => false, 'id' => 'forgotUsername','value'=> $user->username, 'required' => true, 'class' => ['form-control']]); ?>
-    <div class="">
-      <button type="button" class="btn btn-warning btn-md" data-toggle="modal" data-target="#changePassword">Change Password</button>
-    </div>
-    <div class="text-center"> 
-      <?= $this->Form->button(__('Submit'), ['class' => ['btn', 'btn-md', 'btn-primary']]) ?>
-      <?= $this->Html->link('Back',$this->request->referer(),['class' => ['btn', 'btn-md', 'btn-danger']]);?>
-    </div>
-
-  <?= $this->Form->end() ?>
+  </div>
 </div>
-
 <div class="modal fade" id="changePassword" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-lg">
     <div class="modal-content">

@@ -4,6 +4,8 @@
 	<a href="<?= $this->Url->build(['controller' => 'users', 'action' => 'privacyPolicy']) ?>">Privacy Policy</a>
 	&nbsp;
 	<a href="<?= $this->Url->build(['controller' => 'users', 'action' => 'termsOfUse']) ?>">Terms of Use</a>
+	&nbsp;
+	<a href="<?= $this->Url->build(['controller' => 'issues', 'action' => 'add']) ?>">Report an Issue</a>
 </p>
 
 	

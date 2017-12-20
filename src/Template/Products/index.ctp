@@ -28,7 +28,7 @@
                                     <div class="summary">
                                         <h4 class="amount">
                                             <?=$value->name?>
-                                            <span class="text-success">(<?=$value->manufacturer?>)</span>
+                                            <span class="text-success text-uppercase">(<?=$value->manufacturer?>)</span>
                                         </h4>
                                         <div class="info">
                                             <span><?=$value->business_product_category->business->name?> - <?=$value->business_product_category->product_category->name?></span><br>

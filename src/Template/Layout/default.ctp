@@ -145,6 +145,7 @@ $cakeDescription = 'Sell Start';
                                 "plugins/magnific-popup/magnific-popup",
                                 "plugins/jquery-placeholder/jquery.placeholder",
                                 "plugins/dropzone/dropzone",
+                                "plugins/ios-dblclick/ios-dblclick",
                                 "examples.lightbox"
                             ]) 
             ?>
