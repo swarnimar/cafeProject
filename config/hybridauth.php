@@ -4,13 +4,13 @@ use Cake\Core\Configure;
 return [
     'HybridAuth' => [
         'providers' => [
-            // 'Google' => [
-            //     'enabled' => true,
-            //     'keys' => [
-            //         'id' => '<google-client-id>',
-            //         'secret' => '<secret-key>'
-            //     ]
-            // ],
+            'Google' => [
+                'enabled' => true,
+                'keys' => [
+                    'id' => Configure::read('social.googleApiKey'),
+                    'secret' => Configure::read('social.googleApiSecret')
+                ]
+            ],
             'Facebook' => [
                 'enabled' => true,
                 'keys' => [

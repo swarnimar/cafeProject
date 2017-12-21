@@ -58,6 +58,11 @@
                         ['controller' => 'Users', 'action' => 'socialLogin', '?' => ['provider' => 'Facebook']],
                         ['class' => ['btn', 'btn-facebook', 'mb-md', 'ml-xs', 'mr-xs'], 'escape'=>false]
                     ); ?>
+                    <?php echo $this->Form->postLink(
+                        'Connect with '.$this->Html->tag('i', '', array('class' => 'fa fa-google')),
+                        ['controller' => 'Users', 'action' => 'socialLogin', '?' => ['provider' => 'Google']],
+                        ['class' => ['btn', 'btn-facebook', 'btn-danger', 'mb-md', 'ml-xs', 'mr-xs'], 'escape'=>false]
+                    ); ?>
                     <!-- <a class="btn btn-facebook mb-md ml-xs mr-xs">Connect with <i class="fa fa-facebook"></i></a>
                     <a class="btn btn-twitter mb-md ml-xs mr-xs">Connect with <i class="fa fa-twitter"></i></a> -->
                 </div>
