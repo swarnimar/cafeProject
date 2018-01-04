@@ -13,7 +13,7 @@
     <!-- Bootstrap core CSS -->
     <?= $this->Html->css([
                             "landing/bootstrap.min",    
-                            "landing/font-awesome.min"
+                            "plugins/font-awesome/css/font-awesome"
                         ]) 
     ?>
 
