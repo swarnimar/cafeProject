@@ -19,7 +19,7 @@ class UsersController extends AppController
 
     public function initialize(){
         parent::initialize();
-        $this->Auth->allow(['login','socialLogin' ,'logout', 'resetPassword', 'signUp' , 'privacyPolicy', 'termsOfUse']);
+        $this->Auth->allow(['login','socialLogin' ,'logout', 'resetPassword', 'signUp' , 'privacyPolicy', 'termsOfUse', 'landingPage']);
     }
     /**
      * Index method
@@ -354,6 +354,11 @@ class UsersController extends AppController
 
     public function privacyPolicy(){
       $this->viewBuilder()->layout('login');
+      $this->set('_serialize', []);
+    }
+
+    public function landingPage(){
+      $this->viewBuilder()->layout('landing_page');
       $this->set('_serialize', []);
     }
 
