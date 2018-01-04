@@ -8,7 +8,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Agency - Start Bootstrap Theme</title>
+    <title>Sell Start</title>
 
     <!-- Bootstrap core CSS -->
     <?= $this->Html->css([
