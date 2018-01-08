@@ -6,7 +6,7 @@
 
         <div class="panel panel-sign">
             <div class="panel-title-sign mt-xl text-right">
-                <h2 class="title text-uppercase text-bold m-none"><i class="fa fa-user mr-xs"></i> Sign In</h2>
+                <h2 class="title text-uppercase text-bold m-none"><i class="fa fa-user mr-xs"></i> Login</h2>
             </div>
             <div class="panel-body">
                 <?= $this->Form->create(null); ?>
@@ -42,8 +42,8 @@
 
                     <div class="row">
                         <div class="col-sm-offset-8 col-sm-4 text-right">
-                            <button type="submit" class="btn btn-primary hidden-xs pull">Sign In</button>
-                            <button type="submit" class="btn btn-primary btn-block btn-lg visible-xs mt-lg">Sign In</button>
+                            <button type="submit" class="btn btn-primary hidden-xs pull">Login</button>
+                            <button type="submit" class="btn btn-primary btn-block btn-lg visible-xs mt-lg">Login</button>
                         </div>
                     </div>
                 <?= $this->Form->end() ?>
@@ -66,13 +66,14 @@
                     <!-- <a class="btn btn-facebook mb-md ml-xs mr-xs">Connect with <i class="fa fa-facebook"></i></a>
                     <a class="btn btn-twitter mb-md ml-xs mr-xs">Connect with <i class="fa fa-twitter"></i></a> -->
                 </div>
-
-                <p class="text-center">Don't have an account yet? 
-                  <a href="<?= $this->Url->build(['controller' => 'users', 'action' => 'signUp']) ?>">
-                    Sign Up!
-                  </a>  
-                  <!-- <a href="pages-signup.html">Sign Up!</a> -->
-                </p>
+                <h4>
+                  <p class="text-center">Don't have an account yet? 
+                    <a href="<?= $this->Url->build(['controller' => 'users', 'action' => 'signUp']) ?>">
+                      Sign Up!
+                    </a>  
+                    <!-- <a href="pages-signup.html">Sign Up!</a> -->
+                  </p>
+                </h4>
 
             </div>
         </div>

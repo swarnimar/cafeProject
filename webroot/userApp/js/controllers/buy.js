@@ -1,4 +1,4 @@
-app.controller('BuyController', function ($window, $scope,$http,$state, BusinessesFactory,host, ProductsFactory){
+app.controller('BuyController', function ($window, $scope,$http,$state, $anchorScroll, $location,BusinessesFactory,host, ProductsFactory){
   	
   	$scope.businesses = BusinessesFactory.businesses;
   	$scope.product = ProductsFactory.product;
@@ -10,17 +10,22 @@ app.controller('BuyController', function ($window, $scope,$http,$state, Business
 
 	$scope.next = function(){
 
-			for(pos in $scope.formLoc){
-				pos = pos * 1;
-				if($scope.formLoc[pos].value){
-					$scope.formLoc[pos].value = false;
-					if(pos < ($scope.formLoc.length-1)){
-						$scope.formLoc[pos+1].value = true; 
-					}
-					break;
+		for(pos in $scope.formLoc){
+			pos = pos * 1;
+			if($scope.formLoc[pos].value){
+				$scope.formLoc[pos].value = false;
+				if(pos < ($scope.formLoc.length-1)){
+					$scope.formLoc[pos+1].value = true; 
 				}
+				break;
 			}
 		}
+		scrollTop();
+	}
+
+	function scrollTop(){
+		window.scrollTo(0, 0);
+	}
 
 	$scope.back = function(){
 		
@@ -34,7 +39,8 @@ app.controller('BuyController', function ($window, $scope,$http,$state, Business
 				break;
 			}
 		}
-		
+
+		scrollTop();
 	}
 	
 	$scope.selected= function(value1, value2, type){

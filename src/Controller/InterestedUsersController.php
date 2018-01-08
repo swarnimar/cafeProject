@@ -36,6 +36,7 @@ class InterestedUsersController extends AppController
         }else{
            $interestedUsers = $query->where(['Products.user_id' => $this->Auth->user('id')])->all();
            $viewBuyer = true;
+           $this->InterestedUsers->Users->UserAppInfos->updateIntrestedUsersVist($this->Auth->user('id'));
         }
 
         if($loggedInUser['role_id'] == 1 || $viewBuyer){

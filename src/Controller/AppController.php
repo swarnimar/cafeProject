@@ -81,6 +81,40 @@ class AppController extends Controller
         //$this->loadComponent('Csrf');
     }
 
+    public function beforeFilter(Event $event){
+        $user= $this->Auth->user();
+        if($user && $user['role_id'] != 1){
+            $this->loadModel('UserAppInfos');
+            $userAppInfo = $this->UserAppInfos->findByUserId($user['id'])->first();
+            if(!$userAppInfo){
+                $intrestedUsersNotification =$this->UserAppInfos->Users
+                                                                ->InterestedUsers
+                                                                ->find()
+                                                                ->matching('Products', function($q) use($user){
+                                                                    return $q->where([
+                                                                        'Products.user_id' => $user['id']
+                                                                    ]);
+                                                                })
+                                                                ->count();
+            }else{
+                $intrestedUsersNotification =$this->UserAppInfos->Users
+                                                                ->InterestedUsers
+                                                                ->find()
+                                                                ->matching('Products', function($q) use($user){
+                                                                    return $q->where([
+                                                                        'Products.user_id' => $user['id']
+                                                                    ]);
+                                                                })
+                                                                ->where([
+                                                                    'InterestedUsers.created >' => $userAppInfo->interested_users_visit
+                                                                ])
+                                                                ->count();
+            }
+
+            $this->set('intrestedUsersNotification', $intrestedUsersNotification);
+        }
+    }
+
     public function isAuthorized($user){
         return true;
     }

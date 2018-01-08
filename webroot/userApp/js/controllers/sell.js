@@ -1,4 +1,4 @@
-app.controller('SellController', function ($window, $scope,$http,$state, ProductsFactory, BusinessesFactory, host){
+app.controller('SellController', function ($window, $scope,$http,$state, $anchorScroll, $location, ProductsFactory, BusinessesFactory, host){
   
   	$scope.host = host;
 	$scope.businesses = BusinessesFactory.businesses;
@@ -6,6 +6,7 @@ app.controller('SellController', function ($window, $scope,$http,$state, Product
 	$scope.formLoc = ProductsFactory.sellFormLocation;
 	$scope.productAttributes = {business: null}
 	$scope.categoryButtonText = "Next";
+	$scope.view = {addButton : true};
 
 	
 	$scope.imagesDzOptions = {
@@ -77,6 +78,11 @@ app.controller('SellController', function ($window, $scope,$http,$state, Product
 				break;
 			}
 		}
+		scrollTop();
+	}
+
+	function scrollTop(){
+		window.scrollTo(0, 0);
 	}
 
 	$scope.back = function(){
@@ -91,18 +97,21 @@ app.controller('SellController', function ($window, $scope,$http,$state, Product
 				break;
 			}
 		}
+		scrollTop();
 		
 	}
 
 	$scope.addProduct = function(){
-		
+		$scope.view.addButton = false;
 		ProductsFactory.resource.save($scope.product ,function(response){
 			
 			alert("Product has been saved!");
 			ProductsFactory.init();
-            $state.go('home');
+            $window.location.href= host+"products?productType=myProducts";
+            $scope.view.addButton = true;
 		
 		},function(errorResponse) {
+			$scope.view.addButton = true;
 			alert("Product could not be saved!");
 		});
 		

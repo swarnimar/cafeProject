@@ -7,24 +7,28 @@
 			'active' => ($controller == 'Users' && $action == 'dashboard') ? true : false,
 			'url' => ['controller'=> 'Users', 'action' => 'dashboard'],
 			'class' => 'fa fa-home',
+			'notification' => false,
 			'subMenu' => []
 		],
 		'My Products' => [
 			'active' => ($controller == 'Products' && $action == 'index') ? true : false,
 			'url' => ['controller'=> 'Products', 'action' => 'index', '?' => ['productType' => 'myProducts']],
 			'class' => 'fa fa-usd',
+			'notification' => false,
 			'subMenu' => []
 		],
 		'Interested Buyers' => [
 			'active' => ($controller == 'InterestedUsers' && $action == 'index') ? true : false,
 			'url' => ['controller'=> 'InterestedUsers', 'action' => 'index'],
 			'class' => 'fa fa-child',
+			'notification' => true,
 			'subMenu' => []
 		],
 		'Liked Products' => [
 			'active' => ($controller == 'InterestedUsers' && $action == 'index') ? true : false,
 			'url' => ['controller'=> 'InterestedUsers', 'action' => 'index', '?' => ['query' => 'liked']],
 			'class' => 'fa fa-thumbs-o-up',
+			'notification' => false,
 			'subMenu' => []
 		]
 	];
@@ -35,6 +39,9 @@
 	<?php if(empty($value['subMenu'])): ?>
 		<li <?= $value['active'] ? 'class="nav-active"' : ''?>>
 	        <a href="<?= $this->Url->build($value['url']);?>">
+	        	<?php if($value['notification']): ?>
+	        		<span class="pull-right label label-primary"><?= $intrestedUsersNotification." New" ?></span>
+	        	<?php endif; ?>
 	            <i class="<?= $value['class'] ?>" aria-hidden="true"></i>
 	        	<span><?= $menu ?></span>
 	        </a>

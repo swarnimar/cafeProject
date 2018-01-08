@@ -53,6 +53,15 @@ class UsersTable extends Table
         $this->hasMany('Products', [
             'foreignKey' => 'user_id'
         ]);
+
+        $this->hasMany('InterestedUsers', [
+            'foreignKey' => 'user_id'
+        ]);
+
+        $this->hasOne('UserAppInfos', [
+            'foreignKey' => 'user_id'
+        ]);
+
         $this->hasMany('ResetPasswordHashes', [
             'foreignKey' => 'user_id'
         ]);

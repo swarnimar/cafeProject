@@ -18,7 +18,7 @@
             <div class="form-group text-center">
                 <div class="col-md-12">
                     <button type="button" class="btn btn-warning btn-lg" ng-click="back()">Back</button>
-                    <button type="submit" class="btn btn-primary btn-lg" ng-disabled="finishForm.$invalid">Finish</button>
+                    <button type="submit" class="btn btn-primary btn-lg" ng-disabled="finishForm.$invalid || !view.addButton">Finish</button>
                 </div>
             </div>
         </form>

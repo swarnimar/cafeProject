@@ -66,11 +66,13 @@
                         <a class="btn btn-facebook mb-md ml-xs mr-xs">Connect with <i class="fa fa-facebook"></i></a>
                         <a class="btn btn-twitter mb-md ml-xs mr-xs">Connect with <i class="fa fa-twitter"></i></a>
                     </div> -->
-                    <p class="text-center">Already have an account?
-                        <a href="<?= $this->Url->build(['controller' => 'users', 'action' => 'login']) ?>">
-                            Sign In!
-                        </a> 
-                    </p>
+                    <h4>
+                        <p class="text-center">Already have an account?
+                            <a href="<?= $this->Url->build(['controller' => 'users', 'action' => 'login']) ?>">
+                                Login!
+                            </a> 
+                        </p>
+                    </h4>
 
                 <?= $this->Form->end() ?>
             </div>
