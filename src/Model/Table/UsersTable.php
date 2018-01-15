@@ -69,6 +69,10 @@ class UsersTable extends Table
             'foreignKey' => 'user_id'
         ]);
 
+        $this->hasMany('TempImages', [
+            'foreignKey' => 'user_id'
+        ]);
+
         $this->hasMany('ADmad/HybridAuth.SocialProfiles');
 
         \Cake\Event\EventManager::instance()->on('HybridAuth.newUser', [$this, 'createUser']);

@@ -42,17 +42,6 @@ class ProductBillsTable extends Table
             'joinType' => 'INNER'
         ]);
 
-        $this->addBehavior('Josegonzalez/Upload.Upload', [
-                'image_name' => [
-                    'path' => Configure::read('ImageUpload.uploadPath'),
-                    'fields' => [
-                        'dir' => 'image_path',
-                    ],
-                'nameCallback' => function ($data, $settings) {
-                  return time(). $data['name'];
-                }
-            ],
-        ]);
     }
 
     /**
@@ -88,5 +77,22 @@ class ProductBillsTable extends Table
         $rules->add($rules->existsIn(['product_id'], 'Products'));
 
         return $rules;
+    }
+
+    public function beforeMarshal($event, $data, $options){
+        if(gettype($data['image_name']) == 'array'){
+            $this->addBehavior('Josegonzalez/Upload.Upload', [
+                    'image_name' => [
+                        'path' => Configure::read('ImageUpload.uploadPath'),
+                        'unlinkPath' => Configure::read('ImageUpload.uploadPath'),
+                        'fields' => [
+                            'dir' => 'image_path',
+                        ],
+                    'nameCallback' => function ($data, $settings) {
+                      return time(). $data['name'];
+                    }
+                ],
+            ]);
+        }
     }
 }

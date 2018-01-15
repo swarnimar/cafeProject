@@ -29,7 +29,9 @@
 	<div class="panel-body"> 	
         <div class="row text-center">
         	<button type="button" class="btn btn-warning btn-lg" ng-click="back()">Back</button>
-            <button type="button" class="btn btn-primary btn-lg" ng-click="next()">Skip &amp; Continue</button>
+            <button type="button" class="btn btn-primary btn-lg" ng-click="next()">
+        		{{product.product_images.length > 0 || product.product_bills.length > 0 ? 'Continue' : 'Skip & Continue'}}
+        	</button>
         </div>
 
 	</div>

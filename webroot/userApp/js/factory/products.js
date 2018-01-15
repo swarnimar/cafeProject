@@ -68,12 +68,20 @@ app.factory('ProductsFactory', function($http,host, $resource, $state){
 	}
 
 	factory.removeImage = function(type, file){
-		
 		xhrResponse = JSON.parse(file.xhr.response);
-    	tmpName =  xhrResponse.data.image_name.tmp_name;
+    	id =  xhrResponse.tempImage.id;
 		for(x in factory.product[type]){
-			if(factory.product[type][x].image_name.tmp_name === tmpName){
-				factory.product[type].splice(x, 1);
+			if(factory.product[type][x].id === id){
+				$http.post(host+'api/tempImages/delete/'+factory.product[type][x].id).then(
+			 	   
+			 	   function(response){
+						factory.product[type].splice(x, 1);
+			 	   },
+			 	   function(response){
+			 	   		console.log('in error case of delete temp image');
+			 	   		console.log(response);
+			 	   }
+		 	   );
 			}	
 		}
 		console.log(factory.product);

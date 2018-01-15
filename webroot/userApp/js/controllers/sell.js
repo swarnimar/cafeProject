@@ -10,7 +10,8 @@ app.controller('SellController', function ($window, $scope,$http,$state, $anchor
 
 	
 	$scope.imagesDzOptions = {
-			url:host+"productImages/tempImages",
+			url:host+"tempImages/add",
+			method:"post",
 			clickable: '.myTriggerImages',
 			addRemoveLinks: true,
 	        paramName: "image_name", // The name that will be used to transfer the file
@@ -21,17 +22,17 @@ app.controller('SellController', function ($window, $scope,$http,$state, $anchor
 
     $scope.imagesDzCallbacks = {
     	success:function(file, response){
-	       ProductsFactory.addImages('product_images', response.data);
+	       ProductsFactory.addImages('product_images', response.tempImage);
 	    },
 	    removedfile: function(file) {
-	    	
             ProductsFactory.removeImage('product_images', file);
 			file.previewElement.remove(); 
         }
     }
 
     $scope.billDzOptions = {
-			url:host+"productImages/tempImages",
+			url:host+"tempImages/add",
+			method:"post",
 			clickable: '.myTriggerBills',
 			addRemoveLinks: true,
 	        paramName: "image_name", // The name that will be used to transfer the file
@@ -42,7 +43,7 @@ app.controller('SellController', function ($window, $scope,$http,$state, $anchor
 
     $scope.billDzCallbacks = {
     	success:function(file, response){
-	       ProductsFactory.addImages('product_bills', response.data);
+	       ProductsFactory.addImages('product_bills', response.tempImage);
         	console.log('in success dz');
 	    },
 	    removedfile: function(file) {
