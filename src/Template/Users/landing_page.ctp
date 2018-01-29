@@ -137,6 +137,7 @@
                   ['controller' => 'Users', 'action' => 'socialLogin', '?' => ['provider' => 'Facebook']],
                   ['class' => ['btn', 'btn-primary', 'mb-md', 'ml-xs', 'mr-xs'], 'escape'=>false]
               ); ?>
+              <p class="visible-xs visible-sm"></p>
               <?php echo $this->Form->postLink(
                   'Connect with '.$this->Html->tag('i', '', array('class' => 'fa fa-google')),
                   ['controller' => 'Users', 'action' => 'socialLogin', '?' => ['provider' => 'Google']],
