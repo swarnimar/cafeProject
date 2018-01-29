@@ -1,58 +1,104 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="description" content="Responsive Bootstrap Multi-Purpose Landing Page Template">
+<meta name="keywords" content="LandX, Bootstrap, Landing page, Template, Registration, Landing">
+<meta name="author" content="Mizanur Rahman">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-  <head>
+  <!-- SITE TITLE -->
+  <title>Sell Start</title>
 
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
+  <?php $host = $this->Url->build('/', true) ?>
+  
+  <?= $this->Html->meta([
+      'link' => $host."img/landing/favicon.ico",
+      'rel' => 'icon'
+  ]);
+  ?>
 
-    <title>Sell Start</title>
+  <?= $this->Html->meta([
+      'link' => $host."img/landing/apple-touch-icon.png",
+      'rel' => 'apple-touch-icon'
+  ]);
+  ?>
+  <?= $this->Html->meta([
+      'link' => $host."img/landing/apple-touch-icon-72x72.png",
+      'rel' => 'apple-touch-icon',
+      'sizes' => "72x72"
+  ]);
+  ?>
+  <?= $this->Html->meta([
+      'link' => $host."img/landing/apple-touch-icon-114x114.png",
+      'rel' => 'apple-touch-icon',
+      'sizes' => "114x114"
+  ]);
+  ?>
+  <!-- <link rel="icon" href="images/favicon.ico">
+  <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png">
+   -->
 
-    <!-- Bootstrap core CSS -->
-    <?= $this->Html->css([
-                            "landing/bootstrap.min",    
-                            "plugins/font-awesome/css/font-awesome"
-                        ]) 
-    ?>
+  <?= $this->Html->css([
+    "landing/bootstrap.min",
+    "landing/assets/ionicons/css/ionicons",
+    "landing/assets/elegant-icons/style",
+    "landing/owl.theme",
+    "landing/owl.carousel",
+    "landing/nivo-lightbox",
+    "landing/nivo_themes/default/default",
+    "landing/colors/blue",
+    "landing/styles",
+    "plugins/font-awesome/css/font-awesome",
+    "landing/responsive"
+  ])?>
+     
+</head>
 
-    <!-- Custom fonts for this template -->
-    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
-    <link href='https://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'>
-    <link href='https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
-    <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'>
-
-    <!-- Custom styles for this template -->
-    <!-- <link href="css/agency.min.css" rel="stylesheet"> -->
-    <?= $this->Html->css(["landing/agency.min"]) ?>
-
-  </head>
-
-  <body id="page-top">
-
-    <!-- start: page -->
-      <?= $this->fetch('content') ?>
-    <!-- end: page -->
-    
-    <!-- Scripts -->
-    
-    <!-- Bootstrap core JavaScript -->
-    <?= $this->Html->script([
-                              "landing/jquery.min",
-                              "landing/bootstrap.bundle.min"
-                            ]) 
-    ?>
+<body>
+  <!-- start: page -->
+    <?= $this->fetch('content') ?>
+  <!-- end: page -->
 
 
-    <!-- Plugin JavaScript -->
-    <?= $this->Html->script([
-                              "landing/jquery.easing.min",
-                              "landing/jqBootstrapValidation",
-                              "landing/contact_me",
-                              "landing/agency.min.js" // Custom scripts for this template
-                            ]) 
-    ?>
-  </body>
+  <!-- =========================
+       SCRIPTS   
+  ============================== -->
+  <?= $this->Html->script([ "landing/jquery.min" ]) ?>;
 
+
+  <script>
+  /* =================================
+     LOADER                     
+  =================================== */
+  // makes sure the whole site is loaded
+  jQuery(window).load(function() {
+    "use strict";
+          // will first fade out the loading animation
+    jQuery(".status").fadeOut();
+          // will fade out the whole DIV that covers the website.
+    jQuery(".preloader").delay(1000).fadeOut("slow");
+  })
+
+  </script>
+  <?= $this->Html->script([ 
+    "landing/bootstrap.min",
+    "landing/retina-1.1.0.min",
+    "landing/smoothscroll",
+    "landing/jquery.scrollTo.min",
+    "landing/jquery.localScroll.min",
+    "landing/owl.carousel.min",
+    "landing/nivo-lightbox.min",
+    "landing/simple-expand.min",
+    "landing/jquery.nav",
+    "landing/jquery.fitvids",
+    "landing/jquery.ajaxchimp.min",
+    "landing/custom"
+  ]); ?>
+<!-- ****************
+      After neccessary customization/modification, Please minify JavaScript/jQuery according to http://browserdiet.com/en/ for better performance
+     **************** -->
+</body>
 </html>
