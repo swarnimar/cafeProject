@@ -39,7 +39,7 @@
 	<?php if(empty($value['subMenu'])): ?>
 		<li <?= $value['active'] ? 'class="nav-active"' : ''?>>
 	        <a href="<?= $this->Url->build($value['url']);?>">
-	        	<?php if($value['notification']): ?>
+	        	<?php if($value['notification'] && $intrestedUsersNotification > 0): ?>
 	        		<span class="pull-right label label-primary"><?= $intrestedUsersNotification." New" ?></span>
 	        	<?php endif; ?>
 	            <i class="<?= $value['class'] ?>" aria-hidden="true"></i>
