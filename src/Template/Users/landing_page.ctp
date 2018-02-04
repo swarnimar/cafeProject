@@ -56,7 +56,7 @@
       <div class="container">
         
         <div class="navbar-header">
-          <?= $this->Html->image('logo.png', ['alt'=>'Logo',"height" => 70, 'style' => "max-height: 100px;"])?>
+          <?= $this->Html->image('landing/logo.png', ['alt'=>'Logo',"height" => 70, 'style' => "max-height: 100px;"])?>
         </div>
       </div>
       <!-- /END CONTAINER -->

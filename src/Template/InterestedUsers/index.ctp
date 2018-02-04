@@ -8,13 +8,7 @@
                         <th scope="col">Name</th>
                         <th scope="col">Actual Price</th>
                         <th scope="col">Asking Price</th>
-                        <th scope="col">Posted On</th>
-                        <?php if($loggedInUser['role_id'] == 1 || $viewBuyer): ?>
-                            <th scope="col">Buyers</th>
-                        <?php endif; ?>
-                        <?php if($loggedInUser['role_id'] == 1 || $viewSeller): ?>
-                            <th scope="col">Seller</th>
-                        <?php endif; ?>    
+                        <th class="text-center" scope="col"></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -24,21 +18,22 @@
                             <td><?= h($value->product->name) ?></td>
                             <td><?= h($value->product->actual_price) ?></td>
                             <td><?= h($value->product->asking_price) ?></td>
-                            <td><?= h($value->product->created) ?></td>
-                            <?php if($loggedInUser['role_id'] == 1 || $viewBuyer): ?>
-                                <td>
-                                    <a class="btn btn-sm btn-primary" href="#" data-toggle="modal" data-target="#buyerModal" onclick='buyerModal(<?= json_encode($value->users) ?>)'>
-                                        View
-                                    </a>
-                                </td>
-                            <?php endif; ?>   
-                            <?php if($loggedInUser['role_id'] == 1 || ($viewSeller && $value->product->show_contact_info)): ?>
-                                <td>
-                                    <a class="btn btn-sm btn-success" href="#" data-toggle="modal" data-target="#sellerModal" onclick='sellerModal(<?= json_encode($value->product->user) ?>)'>
-                                        View
-                                    </a>
-                                </td>
-                            <?php endif; ?>
+                            <td class="text-center">
+                                <?= '<a href="'.$this->Url->build(['controller' => 'Products','action' => 'view', $value->product->id]).'" class="btn btn-sm btn-warning">View Product</a>' ?>
+                                <?php if($loggedInUser['role_id'] == 1 || $viewBuyer): ?>
+
+                                        <a class="btn btn-sm btn-primary" href="#" data-toggle="modal" data-target="#buyerModal" onclick='buyerModal(<?= json_encode($value->users) ?>)'>
+                                            Intrested Buyers
+                                        </a>
+
+                                <?php endif; ?>   
+                                <?php if($loggedInUser['role_id'] == 1 || ($viewSeller && $value->product->show_contact_info)): ?>
+
+                                        <a class="btn btn-sm btn-success" href="#" data-toggle="modal" data-target="#sellerModal" onclick='sellerModal(<?= json_encode($value->product->user) ?>)'>
+                                            Seller Info
+                                        </a>
+                                <?php endif; ?>
+                            </td>   
                         </tr>
                     <?php endforeach; ?>
                 </tbody>
