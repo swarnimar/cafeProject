@@ -24,16 +24,26 @@ class ProductsController extends AppController
         $query = $this->Products->find()->contain(['Users', 'BusinessProductCategories.Businesses', 'BusinessProductCategories.ProductCategories', 'ProductBills', 'ProductImages']);
 
         $requestQuery = $this->request->query;
+
+        $businessProductCategories = [];
+        if(isset($requestQuery['category']) && !in_array($requestQuery['category'], [null, false, ""])){
+            $businessProductCategory = $this->Products->BusinessProductCategories->findById($requestQuery['category'])->contain('ProductCategories')->first();
+            $businessProductCategories = [$requestQuery['category']];
+            if($businessProductCategory && $businessProductCategory->product_category->name != "Entire Setup"){
+
+                $businessProductCategories = $this->Products->BusinessProductCategories->findByProductCategoryId($businessProductCategory->product_category_id)->extract('id')->toArray();
+            }
+        }
         // pr($requestQuery);die;
-        if(isset($requestQuery['category']) && !in_array($requestQuery['category'], [null, false, ""]) && $this->Auth->user('role_id') == 1){
+        if(!empty($businessProductCategories) && $this->Auth->user('role_id') == 1){
             $products = $query->where([
-                                        'business_product_category_id' => $requestQuery['category'],
+                                        'business_product_category_id IN' => $businessProductCategories,
                                       ])
                                ->all();
 
-        }if(isset($requestQuery['category']) && !in_array($requestQuery['category'], [null, false, ""]) && $this->Auth->user('role_id') != 1){
+        }if(!empty($businessProductCategories) && $this->Auth->user('role_id') != 1){
             $products = $query->where([
-                                        'business_product_category_id' => $requestQuery['category'], 
+                                        'business_product_category_id IN' => $businessProductCategories, 
                                         'user_id IS NOT' => $this->Auth->user('id')
                                       ])
                                ->all();
