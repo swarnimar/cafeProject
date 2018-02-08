@@ -2,9 +2,9 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="description" content="Responsive Bootstrap Multi-Purpose Landing Page Template">
-<meta name="keywords" content="LandX, Bootstrap, Landing page, Template, Registration, Landing">
-<meta name="author" content="Mizanur Rahman">
+<meta name="description" content="sellstart.in is here to help you make most out of your buck and to help you get the best price for your new business or wind up the old one.">
+<meta name="keywords" content="SellStart, Sell Inventory, Buy Inventory, Crockery, Music Sytem, Furniture, Business, StartUp, Sell, Buy, Cheap Inventory, Cheap">
+<meta name="author" content="SellStart">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
   <!-- SITE TITLE -->
